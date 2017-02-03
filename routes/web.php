@@ -12,5 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.index');
 });
+
+Route::get('/catalog/{alias}',function ($alias){
+    dd($alias);
+})->where('alias','(.+)');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
