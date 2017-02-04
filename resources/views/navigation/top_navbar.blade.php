@@ -7,9 +7,12 @@
     </div>
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
-            <li><a href="#">Каталог</a></li>
-            <li><a href="#">Прайс</a></li>
-            <li><a href="#">Контакты</a></li>
+            @if (Auth::check())
+                <li><a href="#">{{ Auth::user()->name }}</a></li>
+            @else
+                <li><a href="{{ url('/login') }}">Войти</a></li>
+                <li><a href="{{ url('/register') }}">Регистрация</a></li>
+            @endif
         </ul>
     </div>
 </nav>

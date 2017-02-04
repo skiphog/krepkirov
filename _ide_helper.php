@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.8 on 2017-02-03.
+ * Generated for Laravel 5.4.9 on 2017-02-04.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -7828,6 +7828,17 @@ namespace {
          */
         public static function fingerprint(){
             return \Illuminate\Http\Request::fingerprint();
+        }
+        
+        /**
+         * Set the JSON payload for the request.
+         *
+         * @param array $json
+         * @return $this 
+         * @static 
+         */
+        public static function setJson($json){
+            return \Illuminate\Http\Request::setJson($json);
         }
         
         /**

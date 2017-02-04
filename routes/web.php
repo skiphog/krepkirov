@@ -15,9 +15,7 @@ Route::get('/', function () {
     return view('pages.index');
 });
 
-Route::get('/catalog/{alias}',function ($alias){
-    dd($alias);
-})->where('alias','(.+)');
+Route::get('/catalog/{full_url}','CatalogController@show')->where('full_url','(.+)');
 
 
 Auth::routes();

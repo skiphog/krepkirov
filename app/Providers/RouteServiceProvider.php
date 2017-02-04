@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Category;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -24,6 +25,11 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        //Route::model('full_url', Category::class);
+
+        Route::bind('full_url',function ($value){
+            return Category::where('full_url',$value)->firstOrFail();
+        });
 
         parent::boot();
     }
