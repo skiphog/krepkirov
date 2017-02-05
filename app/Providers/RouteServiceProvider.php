@@ -24,7 +24,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+
         //Route::model('full_url', Category::class);
 
         Route::bind('full_url',function ($value){

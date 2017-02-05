@@ -165,7 +165,7 @@ class CategoriesTableSeeder extends Seeder
             ],
             [
                 'parent_id' => 10,
-                'url' => 'bolt',
+                'url' => 'hex',
                 'full_url' => 'bolt/hex',
                 'title' => 'Болты с шестигранной головкой',
                 'nav_title' => 'Болты с шестигранной головкой',
@@ -180,7 +180,7 @@ class CategoriesTableSeeder extends Seeder
             ],
             [
                 'parent_id' => 10,
-                'url' => 'bolt',
+                'url' => 'furniture',
                 'full_url' => 'bolt/furniture',
                 'title' => 'Болт мебельный с усом',
                 'nav_title' => 'Болт мебельный с усом',

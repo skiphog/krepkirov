@@ -8,7 +8,12 @@
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
             @if (Auth::check())
-                <li><a href="#">{{ Auth::user()->name }}</a></li>
+
+                @if(Auth::user()->isAdmin())
+                    <li><a href="{{ url('/admin') }}">Админка</a></li>
+                @endif
+
+                <li><a class="uk-text-bold" href="#">{{ Auth::user()->name }}</a></li>
             @else
                 <li><a href="{{ url('/login') }}">Войти</a></li>
                 <li><a href="{{ url('/register') }}">Регистрация</a></li>

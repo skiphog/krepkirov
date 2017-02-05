@@ -15,6 +15,19 @@ Route::get('/', function () {
     return view('pages.index');
 });
 
+Route::group(['prefix' => 'admin'],function (){
+
+
+    Route::get('/','Admin\AdminController@index');
+
+    Route::resource('categories','Admin\CategoryController');
+
+
+});
+
+
+
+Route::get('/catalog','CatalogController@index');
 Route::get('/catalog/{full_url}','CatalogController@show')->where('full_url','(.+)');
 
 

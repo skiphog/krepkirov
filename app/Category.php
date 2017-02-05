@@ -53,6 +53,8 @@ class Category extends Model
         'breadcrumbs' => 'array',
     ];
 
+    protected $guarded = [];
+
 
     /**
      * Все запросы по умолчанию включают в себя where is_show = 1
@@ -64,6 +66,7 @@ class Category extends Model
 
         static::addGlobalScope('is_show', function (Builder $builder) {
             $builder->where('is_show', 1);
+            $builder->orderBy('sort','asc');
         });
     }
 

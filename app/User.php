@@ -24,10 +24,20 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Query\Builder|\App\User wherePassword($value)
  * @method static \Illuminate\Database\Query\Builder|\App\User whereRememberToken($value)
  * @method static \Illuminate\Database\Query\Builder|\App\User whereUpdatedAt($value)
+ * @property bool $is_admin
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereIsAdmin($value)
  */
 class User extends Authenticatable
 {
     use Notifiable;
+
+    /**
+     * Приводить is_admin к boolean
+     * @var array
+     */
+    protected $casts = [
+        'is_admin' => 'boolean'
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -46,4 +56,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Проверка на админа
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->is_admin;
+    }
 }

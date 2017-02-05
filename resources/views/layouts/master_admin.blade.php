@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="@yield('description')">
     <link rel="shortcut icon" href="/images/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png">
     <link rel="stylesheet" href="/css/uikit.min.css">
@@ -68,24 +67,23 @@
     </style>
 </head>
 <body class="uk-container">
-    <header class="uk-margin-bottom general-navbar uk-box-shadow-medium">
-        @include('navigation.top_navbar')
-        @include('navigation.bottom_navbar')
-    </header>
+<header class="uk-margin-bottom general-navbar uk-box-shadow-medium">
+    @include('admin.navigation')
+</header>
 
-    <section>
-        @yield('content')
-    </section>
+<section>
+    @yield('content')
+</section>
 
-    <aside>
-        @yield('aside')
-    </aside>
+<aside>
+    @yield('aside')
+</aside>
 
-    <footer>
-        @yield('footer')
-    </footer>
+<footer>
+    @yield('footer')
+</footer>
 
 
-    @stack('scripts')
+@stack('scripts')
 </body>
 </html>
