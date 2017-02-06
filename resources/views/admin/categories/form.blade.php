@@ -92,7 +92,6 @@ $(document).ready(function () {
                     return;
                 }
                 $('#img').val(json['file_name']).prev('img').attr('src','/images/' + json['file_name']);
-
             }
         });
     });

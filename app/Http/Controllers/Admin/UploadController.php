@@ -42,7 +42,8 @@ class UploadController extends Admin
 
     protected function categoryUpload(UploadedFile $file)
     {
-        $img = Image::make($file)->fit(config('s.img_width_category'),config('s.img_height_category'))
+        $img = Image::make($file)
+            ->fit(config('s.img_width_category'),config('s.img_height_category'))
             ->save(public_path() . '/images/'. $this->destination . '/' . $this->filename);
 
     }

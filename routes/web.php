@@ -22,6 +22,10 @@ Route::group(['prefix' => 'admin'],function (){
 
     Route::post('/upload','Admin\UploadController@upload');
 
+    Route::post('/categories/sort/save','Admin\CategoryController@saveSortCategory');
+
+    Route::get('/categories/sort/gets','Admin\CategoryController@getCategory');
+
     Route::resource('categories','Admin\CategoryController');
 
 

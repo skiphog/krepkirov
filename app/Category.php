@@ -17,7 +17,6 @@ use Illuminate\Database\Eloquent\Builder;
  * @property string $img
  * @property string $text
  * @property string $description
- * @property bool $is_show
  * @property int $sort
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -57,6 +56,7 @@ class Category extends Model
 
 
     /**
+     * @todo Убрать эту фигю отсюда!!!! Доавить простой scope
      * Все запросы по умолчанию включают в себя where is_show = 1
      * @return void
      */
@@ -96,7 +96,7 @@ class Category extends Model
 
     public function setImgAttribute($value)
     {
-        if(empty($value)) {
+        if (empty($value)) {
             return $this->attributes['img'] = config('s.default_img_category');
         }
 
