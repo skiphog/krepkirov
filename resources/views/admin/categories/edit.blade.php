@@ -22,7 +22,7 @@
 
         @include('errors.list')
 
-        {{ Form::model($category,['route' => ['categories.update',$category->id],'class' => 'uk-form-stacked']) }}
+        {{ Form::model($category,['method' => 'PUT','route' => ['categories.update',$category->id],'class' => 'uk-form-stacked']) }}
         @include('admin.categories.form',['nameButton' => 'Сохранить'])
         {{ Form::close() }}
 

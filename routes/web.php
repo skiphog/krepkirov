@@ -20,6 +20,8 @@ Route::group(['prefix' => 'admin'],function (){
 
     Route::get('/','Admin\AdminController@index');
 
+    Route::post('/upload','Admin\UploadController@upload');
+
     Route::resource('categories','Admin\CategoryController');
 
 

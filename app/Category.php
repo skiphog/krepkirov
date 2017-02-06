@@ -64,21 +64,25 @@ class Category extends Model
     {
         parent::boot();
 
-        static::addGlobalScope('is_show', function (Builder $builder) {
-            $builder->where('is_show', 1);
-            $builder->orderBy('sort','asc');
+        static::addGlobalScope('sort', function (Builder $builder) {
+            $builder->orderBy('sort', 'asc');
         });
     }
 
-    public static function getTreeCategories(){
+    /**
+     * Получаем дерево категорий
+     * @return array
+     */
+    public static function getTreeCategories()
+    {
 
         //todo: Достать из кеша
 
-        $categories = parent::all(['id','parent_id','full_url','nav_title'])->keyBy('id')->toArray();
+        $categories = parent::all(['id', 'parent_id', 'full_url', 'nav_title'])->keyBy('id')->toArray();
         $tree = [];
 
         foreach ($categories as $id => &$node) {
-            if(!$node['parent_id']) {
+            if (!$node['parent_id']) {
                 $tree[$id] = &$node;
                 continue;
             }
@@ -88,6 +92,25 @@ class Category extends Model
         unset($node);
 
         return $tree;
+    }
+
+    public function setImgAttribute($value)
+    {
+        if(empty($value)) {
+            return $this->attributes['img'] = config('s.default_img_category');
+        }
+
+        return $this->attributes['img'] = $value;
+    }
+
+    /**
+     * Не преобразуем json utf-8 в unicode символы
+     * @param mixed $value
+     * @return string
+     */
+    protected function asJson($value)
+    {
+        return json_encode($value, JSON_UNESCAPED_UNICODE);
     }
 
 }

@@ -31,7 +31,6 @@ class CategoryRequest extends FormRequest
             'standard' => 'max:255',
             'additionally' => 'max:255',
             'description' => 'required',
-            'img' => 'required',
             'text' => 'required',
         ];
     }

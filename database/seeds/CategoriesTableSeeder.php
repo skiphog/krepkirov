@@ -39,7 +39,7 @@ class CategoriesTableSeeder extends Seeder
                 'description' => 'Анкерный болт с шестигранной гайкой для крепления тяжеловесных конструкций к плотным материалам',
                 'standard' => '',
                 'additionally' => 'бетон, кирпич',
-                'breadcrumbs' => json_encode([['title' => 'Анкеры','url' => 'anker']]),
+                'breadcrumbs' => json_encode([['title' => 'Анкеры','url' => 'anker']],JSON_UNESCAPED_UNICODE),
                 'created_at' => $date,
                 'updated_at' => $date
             ],
@@ -54,7 +54,7 @@ class CategoriesTableSeeder extends Seeder
                 'description' => 'Анкерный болт для крепления тяжеловесных конструкций к плотным материалам',
                 'standard' => '',
                 'additionally' => 'бетон, кирпич',
-                'breadcrumbs' => json_encode([['title' => 'Анкеры','url' => 'anker']]),
+                'breadcrumbs' => json_encode([['title' => 'Анкеры','url' => 'anker']],JSON_UNESCAPED_UNICODE),
                 'created_at' => $date,
                 'updated_at' => $date
             ],
@@ -69,7 +69,7 @@ class CategoriesTableSeeder extends Seeder
                 'description' => '2-х распорный анкерный болт с гайкой для крепления тяжеловесных конструкций к плотным материалам',
                 'standard' => '',
                 'additionally' => 'бетон, кирпич',
-                'breadcrumbs' => json_encode([['title' => 'Анкеры','url' => 'anker']]),
+                'breadcrumbs' => json_encode([['title' => 'Анкеры','url' => 'anker']],JSON_UNESCAPED_UNICODE),
                 'created_at' => $date,
                 'updated_at' => $date
             ],
@@ -84,7 +84,7 @@ class CategoriesTableSeeder extends Seeder
                 'description' => 'Анкерный болт с Г-крюком для для крепления подвесных, тяжеловесных конструкций к плотным материалам',
                 'standard' => '',
                 'additionally' => 'бетон, кирпич',
-                'breadcrumbs' => json_encode([['title' => 'Анкеры','url' => 'anker']]),
+                'breadcrumbs' => json_encode([['title' => 'Анкеры','url' => 'anker']],JSON_UNESCAPED_UNICODE),
                 'created_at' => $date,
                 'updated_at' => $date
             ],
@@ -99,7 +99,7 @@ class CategoriesTableSeeder extends Seeder
                 'description' => 'Анкерный болт с С-крюком для для крепления подвесных, тяжеловесных конструкций к плотным материалам',
                 'standard' => '',
                 'additionally' => 'бетон, кирпич',
-                'breadcrumbs' => json_encode([['title' => 'Анкеры','url' => 'anker']]),
+                'breadcrumbs' => json_encode([['title' => 'Анкеры','url' => 'anker']],JSON_UNESCAPED_UNICODE),
                 'created_at' => $date,
                 'updated_at' => $date
             ],
@@ -114,7 +114,7 @@ class CategoriesTableSeeder extends Seeder
                 'description' => 'Анкерный болт с кольцом для для крепления подвесных, тяжеловесных конструкций к плотным материалам',
                 'standard' => '',
                 'additionally' => 'бетон, кирпич',
-                'breadcrumbs' => json_encode([['title' => 'Анкеры','url' => 'anker']]),
+                'breadcrumbs' => json_encode([['title' => 'Анкеры','url' => 'anker']],JSON_UNESCAPED_UNICODE),
                 'created_at' => $date,
                 'updated_at' => $date
             ],
@@ -129,7 +129,7 @@ class CategoriesTableSeeder extends Seeder
                 'description' => 'Стальной оцинкованный клиновой анкер для тяжелых креплений в плотных строительныхматериалах. Применяется для монтажа рельс, барьеров, фасадных каркасов и конструкционных рам и т.п.',
                 'standard' => '',
                 'additionally' => 'бетон, кирпич',
-                'breadcrumbs' => json_encode([['title' => 'Анкеры','url' => 'anker']]),
+                'breadcrumbs' => json_encode([['title' => 'Анкеры','url' => 'anker']],JSON_UNESCAPED_UNICODE),
                 'created_at' => $date,
                 'updated_at' => $date
             ],
@@ -144,7 +144,7 @@ class CategoriesTableSeeder extends Seeder
                 'description' => 'Стальной оцинкованный быстромонтажный анкер-клин для крепления подвесных конструкций в плотных материалах',
                 'standard' => '',
                 'additionally' => 'бетон',
-                'breadcrumbs' => json_encode([['title' => 'Анкеры','url' => 'anker']]),
+                'breadcrumbs' => json_encode([['title' => 'Анкеры','url' => 'anker']],JSON_UNESCAPED_UNICODE),
                 'created_at' => $date,
                 'updated_at' => $date
             ],
@@ -174,7 +174,7 @@ class CategoriesTableSeeder extends Seeder
                 'description' => 'Болты стальные с шестигранной головкой и метрической резьбой. Без покрытия.',
                 'standard' => 'ГОСТ 7798-70, ГОСТ 7805-70, DIN 931',
                 'additionally' => 'Класс прочности: 5,6',
-                'breadcrumbs' => json_encode([['title' => 'Болты','url' => 'bolt']]),
+                'breadcrumbs' => json_encode([['title' => 'Болты','url' => 'bolt']],JSON_UNESCAPED_UNICODE),
                 'created_at' => $date,
                 'updated_at' => $date
             ],
@@ -189,7 +189,7 @@ class CategoriesTableSeeder extends Seeder
                 'description' => 'Болт мебельный с усом, полукруглой головкой и метрической резьбой.',
                 'standard' => 'ГОСТ 7801-81, DIN 601',
                 'additionally' => 'Класс прочности: 5.6',
-                'breadcrumbs' => json_encode([['title' => 'Болты','url' => 'bolt']]),
+                'breadcrumbs' => json_encode([['title' => 'Болты','url' => 'bolt']],JSON_UNESCAPED_UNICODE),
                 'created_at' => $date,
                 'updated_at' => $date
             ],

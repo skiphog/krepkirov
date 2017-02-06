@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Components\CategoryComponent;
 use App\Http\Requests\CategoryRequest;
-use Illuminate\Http\Request;
 
 class CategoryController extends Admin
 {
@@ -26,7 +25,7 @@ class CategoryController extends Admin
 
     public function store(CategoryRequest $request)
     {
-        $this->createCategory(new CategoryComponent($request));
+        (new CategoryComponent($request))->createCategory();
 
         //session()->flash('flash','Статья создана');
 
@@ -48,19 +47,18 @@ class CategoryController extends Admin
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Category $category,CategoryRequest $request)
     {
-        //
+        (new CategoryComponent($request))->editCategory($category);
+
+        //session()->flash('flash','Статья создана');
+
+        return redirect('/admin'); //->with('flash','Статья создана');
     }
 
 
     public function destroy($id)
     {
         //
-    }
-
-    protected function createCategory(CategoryComponent $component)
-    {
-        $component->createCategory();
     }
 }

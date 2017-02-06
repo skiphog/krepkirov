@@ -25,8 +25,7 @@ class CreateCategoriesTable extends Migration
             $table->string('img');
             $table->text('text');
             $table->text('description');
-            $table->string('breadcrumbs',512);
-            $table->unsignedTinyInteger('is_show')->default(1);
+            $table->string('breadcrumbs',1024);
             $table->unsignedSmallInteger('sort')->default(0);
             $table->timestamps();
         });
