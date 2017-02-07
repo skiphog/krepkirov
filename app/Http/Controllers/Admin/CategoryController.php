@@ -7,7 +7,6 @@ use App\Components\CategoryComponent;
 use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 
-
 class CategoryController extends Admin
 {
 
@@ -32,9 +31,10 @@ class CategoryController extends Admin
 
     public function store(CategoryRequest $request)
     {
-        (new CategoryComponent($request))->createCategory();
+        /** @var Category $category new Category */
+        $category = (new CategoryComponent($request))->createCategory();
 
-        return redirect('/admin')->with('flash', 'Статья создана');
+        return redirect()->route('categories.edit', ['id' => $category->id])->with('flash', 'Категория создана');
     }
 
 
@@ -56,7 +56,7 @@ class CategoryController extends Admin
     {
         (new CategoryComponent($request))->editCategory($category);
 
-        return redirect('/admin')->with('flash', 'Статья создана');
+        return back()->with('flash', 'Категория сохранена');
     }
 
 
@@ -64,6 +64,7 @@ class CategoryController extends Admin
     {
         //
     }
+
 
     public function saveSortCategory(Request $request)
     {
@@ -73,6 +74,7 @@ class CategoryController extends Admin
 
         return back()->with('flash', 'Сортировка сохранена');
     }
+
 
     public function getCategory(Request $request)
     {
@@ -84,4 +86,5 @@ class CategoryController extends Admin
         ]);
 
     }
+
 }

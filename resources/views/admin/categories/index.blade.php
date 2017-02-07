@@ -6,7 +6,11 @@
     <div class="uk-grid-small" uk-grid>
 
         <div class="uk-width-1-4@m uk-visible@m">
+
             <div class="uk-card uk-card-default uk-card-body">
+
+
+                <a class="uk-button uk-button-default uk-margin-large-bottom" href="{{ route('categories.create') }}">Создать категорию</a>
 
                 <ul id="menu-category" class="uk-nav-default uk-nav-parent-icon" uk-nav="multiple: true">
                     <li class="uk-nav-header">

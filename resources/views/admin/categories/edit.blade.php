@@ -21,6 +21,7 @@
     <div class="content uk-box-shadow-medium uk-margin-bottom uk-padding">
 
         @include('errors.list')
+        @include('message.flash')
 
         {{ Form::model($category,['method' => 'PUT','route' => ['categories.update',$category->id],'class' => 'uk-form-stacked']) }}
         @include('admin.categories.form',['nameButton' => 'Сохранить'])

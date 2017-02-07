@@ -21,7 +21,7 @@ class CategoryComponent
     {
         $this->generateData();
 
-        Category::create($this->request);
+        return Category::create($this->request);
     }
 
     public function editCategory(Category $category)
