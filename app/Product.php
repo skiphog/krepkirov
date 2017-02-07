@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Doctrine\DBAL\Query\QueryBuilder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -10,8 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $1c_id
  * @property int $category_id
- * @property string $title
- * @property string $body
+ * @property string $name
+ * @property string $description
  * @property string $image
  * @property float $price_1
  * @property float $price_2
@@ -38,10 +39,20 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Product whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Product whereWeight($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Query\Builder|\App\Product sort()
+ * @method static \Illuminate\Database\Query\Builder|\App\Product whereDescription($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Product whereName($value)
  */
 class Product extends Model
 {
     protected $guarded = [];
 
-    //
+    /**
+     * Сортировка по sort и названию
+     * @param $query QueryBuilder
+     */
+    public function scopeSort($query)
+    {
+        $query->orderBy('sort')->orderBy('name');
+    }
 }

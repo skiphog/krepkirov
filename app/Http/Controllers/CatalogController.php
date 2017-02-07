@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use Illuminate\Http\Request;
+use App\Product;
 
 class CatalogController extends Controller
 {
@@ -20,11 +20,10 @@ class CatalogController extends Controller
 
     public function show(Category $category)
     {
-
-        $categories = Category::where('parent_id', $category->id)->get();
-
         $menus = Category::getTreeCategories();
+        $categories = Category::where('parent_id', $category->id)->get();
+        $products = Product::where('category_id', $category->id)->sort()->get();
 
-        return view('catalog.show', compact('category', 'categories', 'menus'));
+        return view('catalog.show', compact('category', 'menus', 'categories', 'products'));
     }
 }
