@@ -19,11 +19,12 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('category_id')->index()->default(0);
             $table->string('name');
             $table->text('description');
-            $table->decimal('price_1',15,3)->default(0,000);
-            $table->decimal('price_2',15,3)->default(0,000);
-            $table->decimal('price_3',15,3)->default(0,000);
+            $table->decimal('price_1',15,2)->default(0,00);
+            $table->decimal('price_2',15,2)->default(0,00);
+            $table->decimal('price_3',15,2)->default(0,00);
             $table->string('unit',50)->default('');
             $table->decimal('quantity',15,3)->default(0,000);
+            $table->decimal('packing',15,3)->default(0,000);
             $table->string('image')->default('');
             $table->decimal('weight',15,3)->default(0,000);
             $table->unsignedTinyInteger('sort')->default(0);

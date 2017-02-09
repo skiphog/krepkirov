@@ -9,7 +9,7 @@
         <div class="uk-width-1-4@m uk-visible@m">
             <div class="uk-card uk-card-default uk-card-body">
                 <ul class="uk-nav uk-nav-default">
-                    <li class="uk-nav-header">Каталог</li>
+                    <li class="uk-nav-header"><a href="{{ url('catalog') }}">Каталог</a></li>
                     @foreach($categories as $category)
                         <li>
                             <a href="{{ url('catalog/' . $category->full_url) }}">{{ $category->nav_title }}</a>

@@ -64,6 +64,23 @@
         li.uk-active>a {
             color: #333 !important;
         }
+        .uk-form-width-small {
+            width: 100px;
+        }
+        .uk-padding-xmall{
+            padding: 5px;
+        }
+        .cart-added,.cart-added:focus,.cart-added:active{
+            color: #fff;
+            background: #1cc12f;
+        }
+        .cart-added:hover{
+            color: #fff;
+            background: #19b328;
+        }
+        .cart-table {
+            background: #fff;
+        }
 
     </style>
 </head>
@@ -72,6 +89,8 @@
         @include('navigation.top_navbar')
         @include('navigation.bottom_navbar')
     </header>
+
+    @include('cart.cart_min')
 
     <section>
         @yield('content')
@@ -87,5 +106,12 @@
 
 
     @stack('scripts')
+    <script>
+        function clearCart() {
+            if(confirm('Удалить заказ?') === true) {
+                document.getElementById('clear-cart').submit();
+            }
+        }
+    </script>
 </body>
 </html>

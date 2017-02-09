@@ -10,7 +10,6 @@
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
             <li><a href="#">Поиск</a></li>
-            <li><a href="#">Заказ</a></li>
         </ul>
     </div>
 </nav>
