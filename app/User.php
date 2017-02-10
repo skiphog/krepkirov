@@ -26,6 +26,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Query\Builder|\App\User whereUpdatedAt($value)
  * @property bool $is_admin
  * @method static \Illuminate\Database\Query\Builder|\App\User whereIsAdmin($value)
+ * @property string $organization
+ * @property string $phone
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereOrganization($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User wherePhone($value)
  */
 class User extends Authenticatable
 {
@@ -45,7 +49,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'organization', 'phone'
     ];
 
     /**

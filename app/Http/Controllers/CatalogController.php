@@ -11,8 +11,6 @@ class CatalogController extends Controller
 
     public function index()
     {
-        //dd(session()->all());
-
         $categories = Category::where('parent_id', 0)->get();
 
         return view('catalog.index', compact('categories'));

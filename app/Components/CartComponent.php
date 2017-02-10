@@ -4,9 +4,11 @@ namespace App\Components;
 
 
 use App\Product;
+use App\Traits\SessionCart;
 
 class CartComponent
 {
+    use SessionCart;
 
     protected $param = [];
 
@@ -79,14 +81,6 @@ class CartComponent
             'total' => number_format((float)$total, 2, ',', ' '),
             'weight' => number_format((float)$weight, 2, ',', ' ')
         ];
-    }
-
-    public function clearCart()
-    {
-        session()->remove('cart');
-        session()->remove('total');
-        session()->remove('weight');
-        session()->save();
     }
 
 

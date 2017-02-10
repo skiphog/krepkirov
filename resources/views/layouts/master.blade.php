@@ -81,6 +81,10 @@
         .cart-table {
             background: #fff;
         }
+        .input-required:after{
+            content: ' *';
+            color: #ff0000;
+        }
 
     </style>
 </head>
