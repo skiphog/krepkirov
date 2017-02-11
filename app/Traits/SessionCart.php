@@ -9,7 +9,6 @@ trait SessionCart
         session()->remove('cart');
         session()->remove('total');
         session()->remove('weight');
-        session()->save();
     }
 
 }

@@ -41,7 +41,7 @@ Route::group(['prefix' => 'cart'], function () {
 
 Route::group(['prefix' => 'account'], function (){
 
-    Route::post('/order','OrderController@store');
+    Route::post('/order','OrderController@store')->middleware('cart');
 
 });
 

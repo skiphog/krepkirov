@@ -10,8 +10,8 @@
         </div>
         <div class="uk-width-1-3@s">
             <p uk-margin>
-                <a href="{{ action('CartController@show') }}" class="uk-button cart-added">Оформить</a>
-                <button class="uk-button uk-button-default" onclick="clearCart()">Удалить</button>
+                <a href="{{ action('CartController@show') }}" class="uk-button cart-added">@lang('ru.cart.button.execute')</a>
+                <button class="uk-button uk-button-default" onclick="clearCart()">@lang('ru.cart.button.remove')</button>
             </p>
         </div>
     </div>

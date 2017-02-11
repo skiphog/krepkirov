@@ -19,13 +19,15 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->unsignedInteger('quantity');
+            $table->unsignedInteger('positions');
+            $table->decimal('weight', 15, 2);
             $table->decimal('sum', 15, 2);
             $table->unsignedTinyInteger('status')->default(0);
             $table->string('name');
             $table->string('email')->default('');
             $table->string('organization')->default('');
             $table->string('phone',32);
+            $table->string('note')->default('');
             $table->timestamps();
         });
     }

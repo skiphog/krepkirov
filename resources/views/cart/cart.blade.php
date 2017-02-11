@@ -25,7 +25,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach(session('cart') as $id => $item)
+                    @foreach((array)session('cart') as $id => $item)
                         <tr>
                             <td>{{ $item['name'] }}</td>
                             <td>
@@ -57,17 +57,18 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2"><button class="uk-button uk-button-danger" onclick="clearCart()">Удалить</button></td>
+                        <td colspan="2"><button class="uk-button uk-button-danger" onclick="clearCart()">@lang('ru.cart.button.remove')</button></td>
                     </tr>
                 </table>
 
                 <div class="uk-container uk-container-small">
+                    @include('errors.list')
                     {{ Form::open(['action' => 'OrderController@store','class' => 'uk-form-stacked content uk-box-shadow-medium uk-padding uk-margin-bottom']) }}
                     <fieldset class="uk-fieldset">
                         <legend class="uk-legend">Информация о заказчике</legend>
                         <div class="uk-margin">
                             {!! Form::label('organization', 'Организация', ['class' => 'uk-form-label',
-                                'title' => 'Укажите наименование вашей организации или ИП. Так же можно указать частное лицо.',
+                                'title' => trans('ru.order.form.organization'),
                                 'uk-tooltip' => 'pos: left'
                             ]) !!}
                             {!! Form::text('organization',null,['class' => 'uk-input','placeholder' => 'ИП / ООО / Частное лицо']) !!}
@@ -75,7 +76,7 @@
 
                         <div class="uk-margin">
                             {!! Form::label('name', 'Имя', ['class' => 'uk-form-label input-required',
-                                'title' => 'Укажите Ваше имя или фамилию.',
+                                'title' => trans('ru.order.form.name'),
                                 'uk-tooltip' => 'pos: left'
                             ]) !!}
                             {!! Form::text('name',null,['class' => 'uk-input','placeholder' => 'Барак Обама','required']) !!}
@@ -83,7 +84,7 @@
 
                         <div class="uk-margin">
                             {!! Form::label('phone', 'Телефон', ['class' => 'uk-form-label input-required',
-                                'title' => 'Укажите Ваш телефон. Он нужен исключительно для связи. Мы никогда не передаем информацию о клиентах третьим лицам. Так же не рассылаем спам-рассылки.',
+                                'title' => trans('ru.order.form.phone'),
                                 'uk-tooltip' => 'pos: left'
                             ]) !!}
                             {!! Form::text('phone',null,['class' => 'uk-input e-mask','placeholder' => '+7 (999) 999-99-99','required']) !!}
@@ -91,21 +92,21 @@
 
                         <div class="uk-margin">
                             {!! Form::label('email', 'e-mail', ['class' => 'uk-form-label',
-                                'title' => 'Укажите ваш e-mail адрес. Он нужен исключительно для связи. Мы никогда не передаем информацию о клиентах третьим лицам. Так же не рассылаем спам-рассылки.',
+                                'title' => trans('ru.order.form.email'),
                                 'uk-tooltip' => 'pos: left'
                             ]) !!}
                             {!! Form::email('email',null,['class' => 'uk-input','placeholder' => 'barak@obama.ru']) !!}
                         </div>
 
                         <div class="uk-margin">
-                            {!! Form::label('description', 'Примечание', ['class' => 'uk-form-label',
-                                'title' => 'Здесь можно указать предпочтительное время для сборки заказа.',
+                            {!! Form::label('note', 'Примечание', ['class' => 'uk-form-label',
+                                'title' => trans('ru.order.form.note'),
                                 'uk-tooltip' => 'pos: left'
                             ]) !!}
-                            {!! Form::textarea('description',null,['class' => 'uk-textarea','rows' => 4,'placeholder' => '']) !!}
+                            {!! Form::textarea('note',null,['class' => 'uk-textarea','rows' => 4,'placeholder' => '']) !!}
                         </div>
 
-                        {!! Form::submit('Оформить',['class' => 'uk-button cart-added']) !!}
+                        {!! Form::submit(trans('ru.cart.button.execute'),['class' => 'uk-button cart-added']) !!}
 
                     {{ Form::close() }}
                     </fieldset>
@@ -115,9 +116,16 @@
             </div>
         @else
             <div class="uk-alert-primary uk-text-center" uk-alert>
-                <p class="uk-text-lead">Ваш заказ пуст</p>
+
+                @if(session('status'))
+                    <p class="uk-text-lead">{{ session('status.lead') }}</p>
+                    <p>{{ session('status.text') }}</p>
+                @else
+                    <p class="uk-text-lead">@lang('ru.cart.empty')</p>
+                @endif
+
                 <p>
-                    <a class="uk-button uk-button-primary" href="{{ url('catalog') }}">Перейти в каталог</a>
+                    <a class="uk-button uk-button-primary" href="{{ url('catalog') }}">@lang('ru.order.move')</a>
                 </p>
 
             </div>
