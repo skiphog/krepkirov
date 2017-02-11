@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property int $order_id
- * @property string $1c_id
+ * @property string $id_1c
  * @property string $name
  * @property float $price
  * @property string $unit
@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\OrderItem whereSum($value)
  * @method static \Illuminate\Database\Query\Builder|\App\OrderItem whereUnit($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Query\Builder|\App\OrderItem whereId1c($value)
  */
 class OrderItem extends Model
 {

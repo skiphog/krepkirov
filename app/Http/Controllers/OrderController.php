@@ -16,8 +16,6 @@ class OrderController extends Controller
 
     public function store(OrderRequest $orderRequest)
     {
-        //todo: Перенести сообщения в lang:ru
-
         if($this->order->createOrder($orderRequest) === false) {
             return redirect()->action('CartController@show')->withErrors(trans('ru.order.failed'));
         }

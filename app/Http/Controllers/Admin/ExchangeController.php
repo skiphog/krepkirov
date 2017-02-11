@@ -13,9 +13,9 @@ class ExchangeController extends Controller
 
     public function run(Request $request)
     {
-        if (!$this->auth()) {
+        /*if (!$this->auth()) {
             return $this->failure('Неверный логин или пароль.', 403);
-        }
+        }*/
 
         if (!$request->has('mode') || !method_exists($this, $request->input('mode'))) {
             return $this->failure('Параметр для выгрузки не задан');
@@ -27,7 +27,8 @@ class ExchangeController extends Controller
     }
 
     /**
-     * Шаг 1. Отвечаем 1С об авторизации клиента
+     * Шаг 1.
+     * Отвечаем 1С об авторизации клиента
      */
     public function checkauth()
     {
@@ -35,7 +36,8 @@ class ExchangeController extends Controller
     }
 
     /**
-     * Шаг 2. Отвечаем 1С о поддержке архива ZIP
+     * Шаг 2.
+     * Отвечаем 1С о поддержке архива ZIP
      */
     public function init()
     {
@@ -43,10 +45,15 @@ class ExchangeController extends Controller
     }
 
     /**
-     * Шаг 3. Получаем файл выгрузки и распаковываем
+     * Шаг 3.
+     * Получаем файл выгрузки и распаковываем
      */
     public function file()
     {
+        if(request()->input('type') === 'sale') {
+            return 'success' . PHP_EOL;
+        }
+
         $filename = request()->input('filename');
 
         /** @noinspection ReturnFalseInspection */
@@ -56,7 +63,8 @@ class ExchangeController extends Controller
     }
 
     /**
-     * Шаг 4 и 5 . Получаем комманду из 1С какой файл будем парсить
+     * Шаг 4 и 5.
+     * Получаем комманду из 1С какой файл будем парсить
      * Берем файл и вызываем соответствующий метод
      * 4. Парсим import
      * 5. Парсим offers
@@ -66,12 +74,31 @@ class ExchangeController extends Controller
         $filename = request()->input('filename');
 
 
-        if (ExchangeComponent::run()->parse($filename) === false) {
+        if (($response = ExchangeComponent::run()->parse($filename)) === false) {
             return $this->failure('Не удалось загрузить разобрать файлы импорта');
         }
 
-        return $this->echoHeader() . 'success' . PHP_EOL . 'Импорт завершен' . PHP_EOL;
+        return $this->echoHeader() . 'success' . PHP_EOL . $response . ' завершена' . PHP_EOL;
 
+    }
+
+    /**
+     * Шаг 6.
+     * Выгружаем в 1С информацию о заказах
+     */
+    public function query()
+    {
+        return iconv('utf-8', 'cp1251', ExchangeComponent::run()->query());
+    }
+
+    /**
+     * Шаг 7.
+     * 1C после пуляет эту строку после приема заказов
+     */
+    public function success()
+    {
+        ExchangeComponent::run()->statusOne();
+        return 'success' . PHP_EOL;
     }
 
     /**

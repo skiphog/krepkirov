@@ -25,7 +25,7 @@ class OrderComponent
         foreach ((array)$request->session()->get('cart') as $key => $value) {
             $data[] = [
                 'order_id' => $order->id,
-                '1c_id' => $products[$key]['1c_id'],
+                'id_1c' => $products[$key]['id_1c'],
                 'name' => $value['name'],
                 'price' => $products[$key]['price_1'],
                 'unit' => $products[$key]['unit'],

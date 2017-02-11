@@ -18,7 +18,7 @@ class CreateOrderItemsTable extends Migration
 
             $table->unsignedInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders');
-            $table->char('1c_id', 36);
+            $table->char('id_1c', 36);
             //$table->unsignedInteger('product_id');
             //$table->foreign('product_id')->references('id')->on('product');
 

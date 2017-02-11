@@ -33,6 +33,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $note
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\OrderItem[] $orderItems
  * @method static \Illuminate\Database\Query\Builder|\App\Order whereNote($value)
+ * @property int $positions
+ * @property float $weight
+ * @method static \Illuminate\Database\Query\Builder|\App\Order wherePositions($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Order whereWeight($value)
  */
 class Order extends Model
 {

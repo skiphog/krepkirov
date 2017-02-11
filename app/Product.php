@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * App\Product
  *
  * @property int $id
- * @property string $1c_id
+ * @property string $id_1c
  * @property int $category_id
  * @property string $name
  * @property string $description
@@ -44,6 +44,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Product whereName($value)
  * @property float $packing
  * @method static \Illuminate\Database\Query\Builder|\App\Product wherePacking($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Product whereId1c($value)
  */
 class Product extends Model
 {
