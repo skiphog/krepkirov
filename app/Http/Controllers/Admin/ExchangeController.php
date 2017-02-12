@@ -13,9 +13,9 @@ class ExchangeController extends Controller
 
     public function run(Request $request)
     {
-        /*if (!$this->auth()) {
+        if (!$this->auth()) {
             return $this->failure('Неверный логин или пароль.', 403);
-        }*/
+        }
 
         if (!$request->has('mode') || !method_exists($this, $request->input('mode'))) {
             return $this->failure('Параметр для выгрузки не задан');
@@ -78,7 +78,7 @@ class ExchangeController extends Controller
             return $this->failure('Не удалось загрузить разобрать файлы импорта');
         }
 
-        return $this->echoHeader() . 'success' . PHP_EOL . $response . ' завершена' . PHP_EOL;
+        return $this->echoHeader() . 'success' . PHP_EOL . $response . PHP_EOL;
 
     }
 

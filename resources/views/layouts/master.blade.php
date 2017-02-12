@@ -12,8 +12,9 @@
     <script src="/js/jquery-3.1.1.min.js"></script>
     <script src="/js/uikit.min.js"></script>
     <style>
-        html{
+        body{
             overflow-y: scroll;
+            height: 100%;
             /*background: url("/images/background.png") repeat,linear-gradient(to left top, #28a5f5, #1e87f0) 0 0 no-repeat;*/
             background: url("/images/background.png") #1e87f0;
         }
@@ -85,30 +86,42 @@
             content: ' *';
             color: #ff0000;
         }
+        .show-product{
+            cursor: pointer;
+            color: #666;
+        }
+
+        .show-product:hover{
+            color: #333;
+            text-decoration: none;
+        }
+        .prod-description{
+            display: none;
+        }
 
     </style>
 </head>
-<body class="uk-container">
-    <header class="uk-margin-bottom general-navbar uk-box-shadow-medium">
-        @include('navigation.top_navbar')
-        @include('navigation.bottom_navbar')
-    </header>
+<body>
+    <div class="uk-container">
+        <header class="uk-margin-bottom general-navbar uk-box-shadow-medium">
+            @include('navigation.top_navbar')
+            @include('navigation.bottom_navbar')
+        </header>
 
-    @include('cart.cart_min')
+        @include('cart.cart_min')
 
-    <section>
-        @yield('content')
-    </section>
+        <section>
+            @yield('content')
+        </section>
 
-    <aside>
-        @yield('aside')
-    </aside>
+        <aside>
+            @yield('aside')
+        </aside>
 
-    <footer>
-        @yield('footer')
-    </footer>
-
-
+        <footer>
+            @yield('footer')
+        </footer>
+    </div>
     @stack('scripts')
     <script>
         function clearCart() {

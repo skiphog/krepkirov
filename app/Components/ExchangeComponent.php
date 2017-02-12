@@ -44,7 +44,7 @@ class ExchangeComponent
 
         }
 
-        return 'Загрузка номенклатуры';
+        return 'Выгрузка сведений о товарах завершена';
     }
 
     protected function offers(\SimpleXMLElement $xml)
@@ -71,7 +71,7 @@ class ExchangeComponent
 
         Product::where('price_1', (float)0)->delete();
 
-        return 'Загрузка цен номенклатуры';
+        return 'Выгрузка сведений о ценах завершена';
     }
 
     public function query()
@@ -116,8 +116,8 @@ class ExchangeComponent
                 $p->addChild('Сумма', $item->sum);
             }
             //$r = $doc->addChild('ЗначенияРеквизитов')->addChild('ЗначениеРеквизита');
-            //$r->addChild('Наименование', 'Статус заказа');
-            //$r->addChild('Значение', '[F] Доставлен');
+            //$r->addChild('Наименование', 'Финальный статус');
+            //$r->addChild('Значение', 'true');
 
         }
 

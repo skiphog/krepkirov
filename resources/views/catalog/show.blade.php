@@ -85,12 +85,22 @@
 
                     @foreach($products as $product)
                         <div class="content uk-box-shadow-medium uk-margin-small-bottom uk-padding-xmall uk-grid-collapse uk-flex-middle" uk-grid>
+
+
                             <div class="uk-width-1-6@s">
-                                <img src="/images/no_image.jpg" alt="{{ $product->name }}" width="70">
+                                @if(!empty($product->image))
+                                    <img class ="show-product" data-product="{{ $product->id }}" src="/images/catalog/{{ $product->image }}.jpg" alt="{{ $product->name }}" width="70">
+                                @else
+                                    <img class ="show-product" data-product="{{ $product->id }}" src="/images/{{ $category->img }}" alt="{{ $product->name }}" width="70">
+                                @endif
                             </div>
                             <div class="uk-width-1-3@s">
-                                {{ $product->name }}
+                                <a class="show-product" href="#">{{ $product->name }}</a>
+                                <div class="prod-description">{!! $product->description !!}</div>
                             </div>
+
+
+
                             <div class="uk-width-1-4@s">
                                 {{ number_format((float)$product->price_1,2,',',' ') }} р. {{ $product->unit }}
                             </div>
@@ -108,6 +118,23 @@
                         </div>
                     @endforeach
                 </div>
+
+                <div id="modal-product" uk-modal="center: true">
+                    <div class="uk-modal-dialog">
+                        <button class="uk-modal-close-default" type="button" uk-close></button>
+                        <div class="uk-modal-header">
+                            <h2 class="uk-modal-title">Modal Title</h2>
+                        </div>
+                        <div class="uk-modal-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        </div>
+                        <div class="uk-modal-footer uk-text-right">
+                            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                            <button class="uk-button uk-button-primary" type="button">Save</button>
+                        </div>
+                    </div>
+                </div>
+
             @endunless
 
         </div>
@@ -118,16 +145,34 @@
 <Script>
     $(document).ready(function () {
 
-        var total = $('#total'), ct = $('#cart-total');
+        var total = $('#total'), ct = $('#cart-total'), ps = $('#product');
 
         $.ajaxSetup({headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}});
 
-        $('#product').on('keydown','.input-cart',function (e) {
+        ps.on('keydown','.input-cart',function (e) {
             if(e.keyCode === 13) {
                 $(this).next().click().parent().parent().next().find('input').focus();
             }
         });
 
+        /*var modal = UIkit.modal('#modal-product', {
+            beforeshow : function () {
+                console.log('NHFV');
+            }
+        });*/
+
+        //console.log(modal);
+
+       /* $('#modal-product').on('beforeshow',function () {
+            //console.log($(this));
+        });*/
+
+       var modal = UIkit.modal('#modal-product');
+
+        ps.on('click','.show-product', function (e) {
+            e.preventDefault();
+            modal.show();
+        });
 
         $('.change-cart').on('click', function (e) {
             e.preventDefault();
