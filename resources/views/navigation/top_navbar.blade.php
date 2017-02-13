@@ -1,23 +1,22 @@
-<nav class="uk-navbar">
-    <div class="uk-navbar-left">
-        <a class="uk-navbar-item uk-logo" href="/">
-            <img src="/images/logo.png" width="50" height="50" alt="logo">
-            <span class="uk-margin-left">Крепежные материалы</span>
-        </a>
-    </div>
-    <div class="uk-navbar-right">
+<nav class="krep-navbar uk-navbar">
+
+    <a class="krep-brand" href="/">
+        <img class="uk-margin uk-margin-remove" src="/images/logo.png" width="50" height="50" title="logo" alt="logo">
+        <span class="uk-hidden-small">Крепежные материалы</span>
+    </a>
+
+    <div class="uk-navbar-flip">
         <ul class="uk-navbar-nav">
             @if (Auth::check())
-
                 @if(Auth::user()->isAdmin())
                     <li><a href="{{ url('/admin') }}">Админка</a></li>
                 @endif
-
-                <li><a class="uk-text-bold" href="#">{{ Auth::user()->name }}</a></li>
+                <li><a href="#">{{ Auth::user()->name }}</a></li>
             @else
                 <li><a href="{{ url('/login') }}">Войти</a></li>
                 <li><a href="{{ url('/register') }}">Регистрация</a></li>
             @endif
         </ul>
     </div>
+
 </nav>

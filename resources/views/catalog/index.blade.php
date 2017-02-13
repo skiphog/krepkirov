@@ -4,54 +4,45 @@
 @section('description','Каталог товаров')
 
 @section('content')
-    <div class="uk-grid-small" uk-grid>
+    <div class="uk-grid uk-grid-small">
 
-        <div class="uk-width-1-4@m uk-visible@m">
-            <div class="uk-card uk-card-default uk-card-body">
-                <ul class="uk-nav uk-nav-default">
-                    <li class="uk-nav-header"><a href="{{ url('catalog') }}">Каталог</a></li>
+        <div class="uk-width-medium-1-5 uk-hidden-small">
+
+            <div class="content">
+
+                <ul class="uk-nav">
+                    <li><a href="{{ url('catalog') }}">Каталог</a></li>
+                    <ul class="uk-nav-sub">
                     @foreach($categories as $category)
                         <li>
                             <a href="{{ url('catalog/' . $category->full_url) }}">{{ $category->nav_title }}</a>
                         </li>
                     @endforeach
+                    </ul>
                 </ul>
+
             </div>
+
         </div>
-        <div class="uk-width-3-4@m">
-            <ul class="uk-breadcrumb uk-box-shadow-medium">
+
+        <div class="uk-width-medium-4-5">
+            <ul class="uk-breadcrumb content">
                 <li><span>Каталог</span></li>
             </ul>
 
-            <div class="content uk-box-shadow-medium uk-margin-bottom">
+            <h1 class="content uk-text-center">Каталог</h1>
 
-                <h1 class="uk-text-center">Каталог</h1>
-            </div>
-
-            <hr class="uk-divider-icon">
-
-
-            <div class="content uk-box-shadow-medium uk-margin-bottom uk-padding">
-                <div class="uk-grid-match uk-grid-small uk-child-width-1-4@s uk-flex-center uk-text-center" uk-grid>
-                    @foreach($categories as $category)
-                        <div>
-                            <div class="uk-card uk-card-default uk-card-small uk-card-body uk-card-hover">
-                                <a class="uk-link-reset" href="{{ url('catalog/' . $category->full_url) }}">
-                                    <img src="{{ asset('images/' . $category->img) }}" alt="{{ $category->title }}">
-                                    <br>
-                                    {{ $category->title }}
-                                    @unless(empty($category->standard))
-                                        <p class="uk-text-bold">{{ $category->standard }}</p>
-                                    @endunless
-                                    @unless(empty($category->additionally))
-                                        <p class="uk-text-muted">{{ $category->additionally }}</p>
-                                    @endunless
-                                </a>
-                            </div>
+            <div class="content uk-margin-bottom uk-padding">
+                @foreach($categories as $category)
+                    <a class="uk-thumbnail uk-margin-left" href="{{ url('catalog/' . $category->full_url) }}">
+                        <img src="{{ asset('images/' . $category->img) }}" alt="{{ $category->title }}" width="150" height="100">
+                        <div class="uk-thumbnail-caption">
+                            {{ $category->title }}
                         </div>
-                    @endforeach
-                </div>
+                    </a>
+                @endforeach
             </div>
+
         </div>
     </div>
 @endsection

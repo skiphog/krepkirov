@@ -4,23 +4,22 @@
 @section('description','Оформление заказа')
 
 @section('content')
-    <h1 class="uk-text-center content uk-box-shadow-medium">Оформление заказа</h1>
-    <hr class="uk-divider-icon">
+    <h1 class="uk-text-center content">Оформление заказа</h1>
 
-    <div class="content uk-box-shadow-medium uk-margin-bottom uk-padding-small">
+    <div class="content uk-margin-bottom">
         @if(!empty(session('cart')))
 
-            <div class="uk-overflow-auto uk-box-shadow-medium">
-                <table id="cart" class="cart-table uk-table uk-table-middle">
+            <div class="content uk-overflow-container uk-form">
+                <table id="cart" class="uk-table uk-table-middle">
                     <thead>
                     <tr>
-                        <th class="uk-table-expand">Наименование</th>
+                        <th>Наименование</th>
                         <th>Кол-во</th>
                         <th>Вес</th>
                         <th>Цена</th>
                         <th>Итого</th>
                         <th>
-                            <span uk-icon="icon: close"></span>
+                            <span class="uk-close"></span>
                         </th>
                     </tr>
                     </thead>
@@ -29,21 +28,21 @@
                         <tr>
                             <td>{{ $item['name'] }}</td>
                             <td>
-                                <input data-id="{{ $id }}" class="uk-input uk-form-width-small input-cart change-cart" type="number" value="{{ $item['qty'] }}" placeholder="0"> {{ $item['unit'] }}
+                                <input data-id="{{ $id }}" class="krep-input change-cart" type="number" value="{{ $item['qty'] }}" placeholder="0">
                             </td>
                             <td>{{ number_format((float)$item['weight'], 2, ',', ' ') }} кг</td>
                             <td>{{ number_format((float)$item['price'], 2, ',', ' ') }} р.</td>
                             <td>{{ number_format((float)$item['sum'], 2, ',', ' ') }} р.</td>
                             <td>
-                                <button data-id="{{ $id }}" class="del-cart" type="button" uk-close></button>
+                                <a data-id="{{ $id }}" class="uk-close uk-close-alt del-cart"></a>
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
-                <table class="cart-table uk-table uk-table-middle uk-text-right">
+                <table class="uk-table uk-table-middle uk-text-right">
                     <tr>
-                        <td class="uk-table-expand">Вес заказа:</td>
+                        <td>Вес заказа:</td>
                         <td class="uk-text-bold">
                             <span id="total-weight">{{ number_format((float)session('weight'), 2, ',', ' ') }}</span>
                             кг.
@@ -61,55 +60,54 @@
                     </tr>
                 </table>
 
-                <div class="uk-container uk-container-small">
+                <div class="uk-container">
                     @include('errors.list')
-                    {{ Form::open(['action' => 'OrderController@store','class' => 'uk-form-stacked content uk-box-shadow-medium uk-padding uk-margin-bottom']) }}
-                    <fieldset class="uk-fieldset">
-                        <legend class="uk-legend">Информация о заказчике</legend>
-                        <div class="uk-margin">
+                    {{ Form::open(['action' => 'OrderController@store','class' => 'uk-form uk-form-stacked content uk-padding uk-margin-bottom']) }}
+                    <fieldset>
+                        <legend>Информация о заказчике</legend>
+                        <div class="uk-form-row">
                             {!! Form::label('organization', 'Организация', ['class' => 'uk-form-label',
                                 'title' => trans('ru.order.form.organization'),
-                                'uk-tooltip' => 'pos: left'
+                                'data-uk-toolti' => '{pos:\'left\'}'
                             ]) !!}
-                            {!! Form::text('organization',null,['class' => 'uk-input','placeholder' => 'ИП / ООО / Частное лицо']) !!}
+                            {!! Form::text('organization',null,['class' => 'uk-form-width-large','placeholder' => 'ИП / ООО / Частное лицо']) !!}
                         </div>
 
-                        <div class="uk-margin">
+                        <div class="uk-form-row">
                             {!! Form::label('name', 'Имя', ['class' => 'uk-form-label input-required',
                                 'title' => trans('ru.order.form.name'),
-                                'uk-tooltip' => 'pos: left'
+                                'data-uk-toolti' => '{pos:\'left\'}'
                             ]) !!}
-                            {!! Form::text('name',null,['class' => 'uk-input','placeholder' => 'Барак Обама','required']) !!}
+                            {!! Form::text('name',null,['class' => 'uk-form-width-medium','placeholder' => 'Барак Обама','required']) !!}
                         </div>
 
-                        <div class="uk-margin">
+                        <div class="uk-form-row">
                             {!! Form::label('phone', 'Телефон', ['class' => 'uk-form-label input-required',
                                 'title' => trans('ru.order.form.phone'),
-                                'uk-tooltip' => 'pos: left'
+                                'data-uk-toolti' => '{pos:\'left\'}'
                             ]) !!}
-                            {!! Form::text('phone',null,['class' => 'uk-input e-mask','placeholder' => '+7 (999) 999-99-99','required']) !!}
+                            {!! Form::text('phone',null,['class' => 'uk-form-width-medium e-mask','placeholder' => '+7 (999) 999-99-99','required']) !!}
                         </div>
 
-                        <div class="uk-margin">
+                        <div class="uk-form-row">
                             {!! Form::label('email', 'e-mail', ['class' => 'uk-form-label',
                                 'title' => trans('ru.order.form.email'),
-                                'uk-tooltip' => 'pos: left'
+                                'data-uk-toolti' => '{pos:\'left\'}'
                             ]) !!}
-                            {!! Form::email('email',null,['class' => 'uk-input','placeholder' => 'barak@obama.ru']) !!}
+                            {!! Form::email('email',null,['class' => 'uk-form-width-medium','placeholder' => 'barak@obama.ru']) !!}
                         </div>
 
-                        <div class="uk-margin">
+                        <div class="uk-form-row">
                             {!! Form::label('note', 'Примечание', ['class' => 'uk-form-label',
                                 'title' => trans('ru.order.form.note'),
-                                'uk-tooltip' => 'pos: left'
+                                'data-uk-toolti' => '{pos:\'left\'}'
                             ]) !!}
-                            {!! Form::textarea('note',null,['class' => 'uk-textarea','rows' => 4,'placeholder' => '']) !!}
+                            {!! Form::textarea('note',null,['class' => 'uk-margin-bottom','rows' => 4,'placeholder' => '']) !!}
                         </div>
 
-                        {!! Form::submit(trans('ru.cart.button.execute'),['class' => 'uk-button cart-added']) !!}
-
-                    {{ Form::close() }}
+                        {!! Form::button(trans('ru.cart.button.execute'),['type' => 'submit', 'class' => 'uk-button uk-button-success']) !!}
                     </fieldset>
+                    {{ Form::close() }}
                 </div>
 
 
@@ -118,10 +116,10 @@
             <div class="uk-alert-primary uk-text-center" uk-alert>
 
                 @if(session('status'))
-                    <p class="uk-text-lead">{{ session('status.lead') }}</p>
+                    <p class="uk-text-large">{{ session('status.lead') }}</p>
                     <p>{{ session('status.text') }}</p>
                 @else
-                    <p class="uk-text-lead">@lang('ru.cart.empty')</p>
+                    <p class="uk-text-large">@lang('ru.cart.empty')</p>
                 @endif
 
                 <p>
