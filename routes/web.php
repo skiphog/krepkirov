@@ -20,6 +20,16 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::resource('/categories', 'Admin\CategoryController');
 
+    Route::get('/products','Admin\ProductController@index');
+
+    Route::get('/products/search','Admin\ProductController@search');
+
+    Route::get('/products/get','Admin\ProductController@getProductOnCategory');
+
+    Route::post('/products/sort','Admin\ProductController@saveSortProduct');
+
+    Route::get('/products/{product}/edit','Admin\ProductController@edit');
+
 });
 
 Route::group(['prefix' => 'cart'], function () {

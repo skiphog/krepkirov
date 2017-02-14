@@ -5,85 +5,157 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="@yield('description')">
     <link rel="shortcut icon" href="/images/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png">
     <link rel="stylesheet" href="/css/uikit.min.css">
+    <link rel="stylesheet" href="/css/sortable.min.css">
+    <link rel="stylesheet" href="/css/form-file.min.css">
     <script src="/js/jquery-3.1.1.min.js"></script>
     <script src="/js/uikit.min.js"></script>
     <style>
+
+        :focus {
+            outline: none !important;
+        }
+
         html{
+            height: 100%;
+        }
+
+        body{
+            min-height: 100%;
             overflow-y: scroll;
-            /*background: url("/images/background.png") repeat,linear-gradient(to left top, #28a5f5, #1e87f0) 0 0 no-repeat;*/
             background: url("/images/background.png") #1e87f0;
         }
-
-        .uk-logo,.uk-logo:focus,.uk-logo:hover,.uk-navbar-nav>li:hover>a, .uk-navbar-nav>li>a.uk-open, .uk-navbar-nav>li>a:focus {
-            color: #fff;
+        .content,.krep-navbar {
+            padding: 5px;
         }
 
-        .uk-navbar-nav>li>a {
-            color: rgba(255,255,255,0.8);
-            position: relative;
-        }
-
-        .uk-navbar-nav>li>a:before{
-            content: '';
-            display: block;
-            position: absolute;
-            left: 15px;
-            right: calc(102% - 15px);
-            bottom: 30px;
-            height: 1px;
-            background-color: currentColor;
-            -webkit-transition: .3s ease-in-out;
-            transition: .3s ease-in-out;
-            -webkit-transition-property: right;
-            transition-property: right;
-        }
-
-        .uk-navbar-nav>li>a:hover::before {
-            right: 15px;
-        }
-        .general-navbar {
-            background-color: rgba(30, 135, 240, 0.87);
-        }
-
-        .content,.uk-card-default,.uk-breadcrumb{
-
+        .content {
             background-color: rgba(255, 255, 255, 0.9);;
         }
 
-        .bottom-bar{
-            height: 25px;
-            padding-bottom: 10px;
+        .general-navbar,.content,.shadow-box,.show-img:hover  {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
-        .uk-breadcrumb{
-            padding: 5px;
+
+        .krep-navbar {
+            background-color: rgba(30, 135, 240, 0.87);
         }
-        li.uk-active>a {
-            color: #333 !important;
+
+        .krep-brand,.krep-navbar .uk-navbar-nav > li > a,.krep-navbar > a:hover,.cart-added,.cart-added:focus,.cart-added:active,.cart-added:hover{
+            color: #fff;
         }
+
+        .krep-brand {
+            font-size: 18px;
+        }
+
+        .krep-navbar .uk-navbar-nav > li > a {
+            height: 40px;
+            margin: 0;
+            border: none;
+            text-shadow: none;
+            font-size: 15px;
+        }
+
+        .krep-navbar > a:hover {
+            text-decoration: none;
+        }
+
+        .krep-navbar .uk-navbar-nav > li:hover > a, .krep-navbar .uk-navbar-nav > li > a:focus,.krep-navbar .uk-navbar-nav > li > a:active, .krep-navbar .uk-navbar-nav > li.uk-open > a {
+            background-color: transparent;
+            color: #ffff00;
+        }
+
+        .carts{
+            min-height: 160px;
+            padding: 20px 20px 0;
+        }
+        .cart-mini{
+            padding: 10px;
+            z-index: 9999;
+        }
+
+        .uk-link:hover, a:hover,li.uk-active > a,a.show-product {
+            color: #444;
+        }
+        .krep-standard,.krep-additionally{
+            margin: 0;
+        }
+
+        .krep-standard{
+            font-weight: 700;
+        }
+        .krep-additionally{
+            color: #999!important;
+        }
+        .krep-description{
+            margin-top: 15px;
+        }
+        .krep-cart-product{
+            margin: 0 0 10px 10px;
+            width: 200px;
+            height: 250px;
+            vertical-align: top;
+            text-align: center;
+        }
+        .krep-input{
+            width: 80px;
+        }
+
+        .cart-added,.cart-added:focus {
+            background-color: #8cc14c;
+        }
+
+        .cart-added:hover {
+            background-color: #8ec73b;
+        }
+
+        .cart-added:active{
+            background-color:#72ae41;
+        }
+
+        .show-img{
+            cursor: pointer;
+        }
+
+        .prod-description{
+            display: none;
+        }
+        .uk-table th, .uk-table td {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .input-required:after{
+            content: ' *';
+            color: #ff0000;
+        }
+
 
     </style>
 </head>
-<body class="uk-container">
-<header class="uk-margin-bottom general-navbar uk-box-shadow-medium">
-    @include('admin.navigation')
-</header>
+<body>
+<div class="uk-container uk-container-center">
+    <header class="uk-margin-bottom general-navbar uk-margin-top">
+        @include('admin.navigation')
+    </header>
 
-<section>
-    @yield('content')
-</section>
+    <section>
+        @yield('content')
+    </section>
 
-<aside>
-    @yield('aside')
-</aside>
+    <aside>
+        @yield('aside')
+    </aside>
 
-<footer>
-    @yield('footer')
-</footer>
+    <footer>
+        @yield('footer')
+    </footer>
+</div>
 
-
+@yield('modal')
 @stack('scripts')
 </body>
 </html>

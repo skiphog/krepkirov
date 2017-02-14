@@ -12,12 +12,14 @@
             <div class="content">
 
                 <ul class="uk-nav">
-                    <li><a href="{{ url('catalog') }}">Каталог</a></li>
-                    <ul class="uk-nav-sub">
-                        @foreach($menus as $menu)
-                            @include('menu.cat_menu',['menu' => $menu])
-                        @endforeach
-                    </ul>
+                    <li>
+                        <a href="{{ url('catalog') }}">Каталог</a>
+                        <ul class="uk-nav-sub">
+                            @foreach($menus as $menu)
+                                @include('menu.cat_menu',['menu' => $menu])
+                            @endforeach
+                        </ul>
+                    </li>
                 </ul>
 
             </div>
@@ -75,10 +77,10 @@
             @endif
 
             @if(!$products->isEmpty())
-                <div id="product" class="content uk-margin-bottom">
+                <div id="product" class="content uk-margin-bottom uk-form">
 
                     @foreach($products as $product)
-                        <div class="content uk-margin-small-bottom uk-grid uk-grid-collapse uk-flex-middle uk-form">
+                        <div class="content uk-margin-small-bottom uk-grid uk-grid-collapse uk-flex-middle">
 
                             @if(!empty($product->image))
                                 <div class="uk-width-medium-1-6">

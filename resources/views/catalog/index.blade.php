@@ -11,14 +11,16 @@
             <div class="content">
 
                 <ul class="uk-nav">
-                    <li><a href="{{ url('catalog') }}">Каталог</a></li>
-                    <ul class="uk-nav-sub">
-                    @foreach($categories as $category)
-                        <li>
-                            <a href="{{ url('catalog/' . $category->full_url) }}">{{ $category->nav_title }}</a>
-                        </li>
-                    @endforeach
-                    </ul>
+                    <li>
+                        <a href="{{ url('catalog') }}">Каталог</a>
+                        <ul class="uk-nav-sub">
+                            @foreach($categories as $category)
+                                <li>
+                                    <a href="{{ url('catalog/' . $category->full_url) }}">{{ $category->nav_title }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
                 </ul>
 
             </div>

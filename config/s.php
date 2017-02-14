@@ -2,6 +2,7 @@
 
 return [
     'default_img_category' => 'no_image.png',
+    'default_img_product' => 'no_image.jpg',
     'images_path' => 'catalog',
     'img_width_category' => 150,
     'img_height_category' => 100,

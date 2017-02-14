@@ -22,16 +22,16 @@ class UploadController extends Admin
 
         list($method) = array_keys($file);
 
-        if(!$file[$method]->isValid()) {
+        if (!$file[$method]->isValid()) {
             abort(500);
         }
 
-        $this->processUpload($method,$file[$method]);
+        $this->processUpload($method, $file[$method]);
 
         return $this->returnResponse();
     }
 
-    protected function processUpload($method,$file)
+    protected function processUpload($method, $file)
     {
         $this->setDirectory();
 
@@ -42,14 +42,9 @@ class UploadController extends Admin
 
     protected function categoryUpload(UploadedFile $file)
     {
-        $img = Image::make($file)
-            ->fit(config('s.img_width_category'),config('s.img_height_category'))
-            ->save(public_path() . '/images/'. $this->destination . '/' . $this->filename);
-
-    }
-
-    protected function productUpload(UploadedFile $file)
-    {
+        Image::make($file)
+            ->fit(config('s.img_width_category'), config('s.img_height_category'))
+            ->save(public_path() . '/images/' . $this->destination . '/' . $this->filename);
 
     }
 
@@ -57,10 +52,10 @@ class UploadController extends Admin
     {
         $this->destination = config('s.images_path') . '/' . Carbon::now()->format('md');
 
-        $dir = public_path() . '/images/'. $this->destination;
+        $dir = public_path() . '/images/' . $this->destination;
 
         if (!@mkdir($dir, 0777, true) && !is_dir($dir)) {
-           abort(500);
+            abort(500);
         }
 
     }

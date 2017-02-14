@@ -17,7 +17,12 @@
             outline: none !important;
         }
 
+        html{
+            height: 100%;
+        }
+
         body{
+            min-height: 100%;
             overflow-y: scroll;
             background: url("/images/background.png") #1e87f0;
         }
@@ -132,8 +137,7 @@
 <body>
     <div class="uk-container uk-container-center">
         <header class="uk-margin-bottom general-navbar uk-margin-top">
-            @include('navigation.top_navbar')
-            @include('navigation.bottom_navbar')
+            @include('navigation.navigation')
         </header>
 
         @include('cart.cart_min')

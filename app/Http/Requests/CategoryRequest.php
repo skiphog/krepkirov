@@ -36,7 +36,7 @@ class CategoryRequest extends FormRequest
                 'required',
                 'min:3',
                 'max:255',
-                Rule::unique('categories')->ignore($this->route()->category->id)
+                Rule::unique('categories')->ignore($this->route()->category->id ?? null)
             ]
         ];
     }

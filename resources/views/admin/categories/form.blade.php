@@ -1,5 +1,5 @@
 {{-- todo: Красивая выпадашка с поиском --}}
-<div class="uk-margin">
+<div class="uk-form-row">
     <label class="uk-form-label" for="parent_id">Выберите вложенность</label>
     <select id="parent_id" name="parent_id" class="uk-select">
         <option value="0">Главная</option>
@@ -7,52 +7,52 @@
     </select>
 </div>
 
-<div class="uk-margin">
+<div class="uk-form-row">
     {!! Form::label('title', 'Название', ['class' => 'uk-form-label']) !!}
-    {!! Form::text('title',null,['class' => 'uk-input','placeholder' => 'Супер болты']) !!}
+    {!! Form::text('title',null,['class' => 'uk-form-width-large','placeholder' => 'Супер болты', 'required']) !!}
 </div>
 
-<div class="uk-margin">
+<div class="uk-form-row">
     {!! Form::label('nav_title', 'Как будет называться в меню', ['class' => 'uk-form-label']) !!}
-    {!! Form::text('nav_title',null,['class' => 'uk-input','placeholder' => 'Супер болты']) !!}
+    {!! Form::text('nav_title',null,['placeholder' => 'Супер болты', 'required']) !!}
 </div>
 
-<div class="uk-margin">
+<div class="uk-form-row">
     {!! Form::label('standard', 'Спецификация', ['class' => 'uk-form-label']) !!}
-    {!! Form::text('standard',null,['class' => 'uk-input','placeholder' => 'DIN 933']) !!}
+    {!! Form::text('standard',null,['class' => 'uk-form-width-large','placeholder' => 'DIN 933']) !!}
 </div>
 
-<div class="uk-margin">
+<div class="uk-form-row">
     {!! Form::label('additionally', 'Предназначение', ['class' => 'uk-form-label']) !!}
-    {!! Form::text('additionally',null,['class' => 'uk-input','placeholder' => 'бетон, кирпич']) !!}
+    {!! Form::text('additionally',null,['class' => 'uk-form-width-large','placeholder' => 'бетон, кирпич']) !!}
 </div>
 
-<div class="uk-margin">
-    <div class="uk-inline-clip uk-transition-toggle">
-        <img src="/images/{{ $category->img or config('s.default_img_category') }}" alt="image">
+<div class="uk-form-row">
+    <figure class="uk-overlay uk-overlay-hover">
+        <img class="uk-overlay-spin" src="/images/{{ $category->img or config('s.default_img_category') }}" width="150" height="100" alt="image">
         {!! Form::hidden('img',null,['id' => 'img']) !!}
-        <div class="uk-transition-fade uk-position-cover uk-position-small uk-overlay uk-overlay-default uk-flex uk-flex-center uk-flex-middle">
-            <div uk-form-custom>
+        <figcaption class="uk-overlay-panel uk-overlay-background uk-overlay-bottom uk-overlay-slide-bottom uk-text-center">
+            <div class="uk-form-file">
+                Загрузить
                 <input id="file" type="file">
-                <span class="uk-link">Загрузить</span>
             </div>
-        </div>
-    </div>
+        </figcaption>
+    </figure>
 </div>
 
-<div class="uk-margin">
+<div class="uk-form-row">
     {!! Form::label('description', 'Метаописание (нужно для поисковиков) одним предложением', ['class' => 'uk-form-label']) !!}
-    {!! Form::textarea('description',null,['class' => 'uk-textarea','rows' => 4,'placeholder' => 'Болты стальные с шестигранной головкой и метрической резьбой. Без покрытия.']) !!}
+    {!! Form::textarea('description',null,['rows' => 4,'placeholder' => 'Болты стальные с шестигранной головкой и метрической резьбой. Без покрытия.']) !!}
 </div>
 
-<div class="uk-margin">
+<div class="uk-form-row">
     {!! Form::label('text', 'Описание', ['class' => 'uk-form-label']) !!}
-    {!! Form::textarea('text',null,['class' => 'uk-textarea','rows' => 5,'placeholder' => 'Болты стальные с шестигранной головкой и метрической резьбой. Без покрытия.']) !!}
+    {!! Form::textarea('text',null,['class' => 'uk-margin-bottom','rows' => 5,'placeholder' => 'Болты стальные с шестигранной головкой и метрической резьбой. Без покрытия.']) !!}
 </div>
 
 
 {{-- todo: Прикрутить EDITOR --}}
-{!! Form::submit($nameButton,['class' => 'uk-button uk-button-primary']) !!}
+{!! Form::button($nameButton,['type' => 'submit', 'class' => 'uk-button uk-button-primary']) !!}
 
 @push('scripts')
 <script>
