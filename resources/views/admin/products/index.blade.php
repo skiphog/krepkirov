@@ -51,7 +51,21 @@ $(document).ready(function () {
         $('#save-product').show();
     });
 
-
+    response.on('click','.del-product',function (e) {
+       e.preventDefault();
+       if(confirm('Удалить товар?') === true) {
+           var a = $(this);
+           $.post('/admin/products/destroy',{id:a.data('id')},function (j) {
+               a.parent().parent().slideUp(500,function () {
+                   $(this).remove();
+               });
+               UIkit.notify("<i class='uk-icon-check'></i> Карточка товара удалена", {
+                   pos: "top-center",
+                   status: "success"
+               });
+           });
+       }
+    });
 
     $('#search').on('input propertyChange',function () {
         clearTimeout(t);

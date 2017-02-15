@@ -14,6 +14,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::post('/upload', 'Admin\UploadController@upload');
 
+    Route::post('/upload/product', 'Admin\UploadController@uploadProductImg');
+
     Route::post('/categories/sort/save', 'Admin\CategoryController@saveSortCategory');
 
     Route::get('/categories/sort/gets', 'Admin\CategoryController@getCategory');
@@ -28,7 +30,13 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::post('/products/sort','Admin\ProductController@saveSortProduct');
 
+    Route::post('/products/destroy','Admin\ProductController@destroy');
+
     Route::get('/products/{product}/edit','Admin\ProductController@edit');
+
+    Route::put('/products/{product}','Admin\ProductController@update');
+
+    Route::get('/price','Admin\PriceController@index');
 
 });
 

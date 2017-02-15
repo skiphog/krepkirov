@@ -1,6 +1,9 @@
 /.idea
-/node_modules
 /tests
 /vendor
 /public/images
+/storage
+/public/downloads
 .env
+/.phpstorm.meta.php
+_ide_helper.php

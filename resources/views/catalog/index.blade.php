@@ -36,7 +36,7 @@
 
             <div class="content uk-margin-bottom uk-padding">
                 @foreach($categories as $category)
-                    <a class="uk-thumbnail uk-margin-left" href="{{ url('catalog/' . $category->full_url) }}">
+                    <a class="cart-category uk-thumbnail" href="{{ url('catalog/' . $category->full_url) }}">
                         <img src="{{ asset('images/' . $category->img) }}" alt="{{ $category->title }}" width="150" height="100">
                         <div class="uk-thumbnail-caption">
                             {{ $category->title }}

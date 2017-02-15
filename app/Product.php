@@ -42,7 +42,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Product sort()
  * @method static \Illuminate\Database\Query\Builder|\App\Product whereDescription($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Product whereName($value)
- * @property float $packing
+ * @property int $packing
  * @method static \Illuminate\Database\Query\Builder|\App\Product wherePacking($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Product whereId1c($value)
  */

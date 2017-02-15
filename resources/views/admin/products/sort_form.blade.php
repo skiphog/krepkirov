@@ -22,7 +22,7 @@
                 </div>
                 <div class="uk-width-medium-1-6 uk-clearfix">
                     {{ number_format((float)$product->price_1, 2, ',', ' ') }}
-                    <span class="uk-icon-times uk-float-right uk-margin-right"></span>
+                    <a data-id="{{ $product->id }}" class="uk-icon-hover uk-icon-times del-product uk-float-right uk-margin-right"></a>
                 </div>
                 {!! Form::hidden('product[]',$product->id) !!}
             </div>

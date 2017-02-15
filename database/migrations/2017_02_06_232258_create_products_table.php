@@ -24,7 +24,7 @@ class CreateProductsTable extends Migration
             $table->decimal('price_3',15,2)->default(0,00)->unsigned();
             $table->string('unit',50)->default('');
             $table->decimal('quantity',15,3)->default(0,000)->unsigned();
-            $table->decimal('packing',15,3)->default(0,000)->unsigned();
+            $table->unsignedInteger('packing')->default(0);
             $table->string('image')->default('');
             $table->decimal('weight',15,3)->default(0,000)->unsigned();
             $table->unsignedTinyInteger('sort')->default(0);

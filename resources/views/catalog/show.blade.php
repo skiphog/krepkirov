@@ -60,7 +60,7 @@
                 <div class="content uk-margin-bottom uk-padding">
                     @foreach($categories as $category)
 
-                        <a class="uk-thumbnail krep-cart-product" href="/catalog/{{ $category->full_url }}">
+                        <a class="uk-thumbnail cart-category krep-cart-product" href="/catalog/{{ $category->full_url }}">
                             <img src="/images/{{ $category->img }}" alt="{{ $category->title }}" width="150" height="100">
                             <div class="uk-thumbnail-caption">
                                 {{ $category->title }}

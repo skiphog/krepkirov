@@ -20,7 +20,7 @@
                 <td>{{ number_format((float)$product->weight, 2, ',', ' ') }} кг</td>
                 <td>{{ $product->unit }}</td>
                 <td>{{ number_format((float)$product->price_1, 2, ',', ' ') }}</td>
-                <td><i class="uk-icon-times"></i></td>
+                <td><a data-id="{{ $product->id }}" class="uk-icon-hover uk-icon-times del-product"></a></td>
             </tr>
         @endforeach
         </tbody>

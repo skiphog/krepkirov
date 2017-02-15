@@ -8,9 +8,11 @@
     <meta name="description" content="@yield('description')">
     <link rel="shortcut icon" href="/images/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png">
-    <link rel="stylesheet" href="/css/uikit.min.css">
-    <link rel="stylesheet" href="/css/sortable.min.css">
-    <link rel="stylesheet" href="/css/form-file.min.css">
+    <link rel="stylesheet" href="/css/uikit.almost-flat.min.css">
+    <link rel="stylesheet" href="/css/sortable.almost-flat.min.css">
+    <link rel="stylesheet" href="/css/form-file.almost-flat.min.css">
+    <link rel="stylesheet" href="/css/progress.almost-flat.min.css">
+    <link rel="stylesheet" href="/css/dropBox.css">
     <script src="/js/jquery-3.1.1.min.js"></script>
     <script src="/js/uikit.min.js"></script>
     <style>
@@ -30,13 +32,14 @@
         }
         .content,.krep-navbar {
             padding: 5px;
+            border-radius: 4px;
         }
 
         .content {
             background-color: rgba(255, 255, 255, 0.9);;
         }
 
-        .general-navbar,.content,.shadow-box,.show-img:hover  {
+        .krep-navbar,.content,.shadow-box,.show-img:hover  {
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
 
@@ -138,7 +141,7 @@
 </head>
 <body>
 <div class="uk-container uk-container-center">
-    <header class="uk-margin-bottom general-navbar uk-margin-top">
+    <header class="uk-margin-bottom uk-margin-top">
         @include('admin.navigation')
     </header>
 

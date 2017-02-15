@@ -55,6 +55,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'price' => [
+            'driver' => 'local',
+            'root' => public_path('downloads/price'),
+            'url' => env('APP_URL').'/downloads/price',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_KEY'),

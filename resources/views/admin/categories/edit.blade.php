@@ -31,7 +31,7 @@
         @include('errors.list')
         @include('message.flash')
 
-        {{ Form::model($category,['method' => 'PUT','route' => ['categories.update',$category->id],'class' => 'uk-form uk-form-stacked content uk-padding uk-margin-bottom']) }}
+        {{ Form::model($category,['method' => 'PUT','route' => ['categories.update',$category->id],'class' => 'uk-form uk-form-stacked content uk-margin-bottom']) }}
             @include('admin.categories.form',['nameButton' => 'Сохранить'])
         {{ Form::close() }}
 

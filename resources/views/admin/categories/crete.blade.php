@@ -9,7 +9,7 @@
 
         @include('errors.list')
 
-        {{ Form::open(['route' => 'categories.store','class' => 'uk-form uk-form-stacked content uk-padding uk-margin-bottom']) }}
+        {{ Form::open(['route' => 'categories.store','class' => 'uk-form uk-form-stacked content uk-margin-bottom']) }}
             @include('admin.categories.form',['nameButton' => 'Добавить'])
         {{ Form::close() }}
 

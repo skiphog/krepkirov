@@ -20,7 +20,9 @@ class ProductController extends Admin
 
     public function edit(Product $product)
     {
-        dd($product);
+        $categories = Category::getTreeCategories();
+
+        return view('admin.products.edit', compact('product','categories'));
     }
 
     public function search(Request $request)
@@ -38,6 +40,13 @@ class ProductController extends Admin
         return view('admin.products.result_search', compact('products'));
     }
 
+    public function update(Product $product, Request $request)
+    {
+        $product->update($request->all());
+
+        return back()->with('flash', 'Карточка товара сохранена');
+    }
+
     public function getProductOnCategory(Request $request)
     {
         $products = Product::where('category_id', $request->input('data'))->sort()->get();
@@ -52,6 +61,11 @@ class ProductController extends Admin
         }
 
         return back()->with('flash', 'Сортировка сохранена');
+    }
+
+    public function destroy(Request $request)
+    {
+        return Product::find($request->input('id'));//->delete();
     }
 
     private function getProductsNoCategory()

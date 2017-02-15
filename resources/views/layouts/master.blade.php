@@ -8,7 +8,7 @@
     <meta name="description" content="@yield('description')">
     <link rel="shortcut icon" href="/images/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png">
-    <link rel="stylesheet" href="/css/uikit.min.css">
+    <link rel="stylesheet" href="/css/uikit.almost-flat.min.css">
     <script src="/js/jquery-3.1.1.min.js"></script>
     <script src="/js/uikit.min.js"></script>
     <style>
@@ -28,13 +28,14 @@
         }
         .content,.krep-navbar {
             padding: 5px;
+            border-radius: 4px;
         }
 
         .content {
             background-color: rgba(255, 255, 255, 0.9);;
         }
 
-        .general-navbar,.content,.shadow-box,.show-img:hover  {
+        .cart-category,.krep-navbar,.content,.shadow-box,.show-img:hover  {
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
 
@@ -93,7 +94,6 @@
             margin-top: 15px;
         }
         .krep-cart-product{
-            margin: 0 0 10px 10px;
             width: 200px;
             height: 250px;
             vertical-align: top;
@@ -131,12 +131,20 @@
             color: #ff0000;
         }
 
+        .cart-category{
+            border: none;
+            margin: 0 0 15px 15px;
+        }
+        .cart-category:hover{
+            box-shadow: 0 14px 25px rgba(0,0,0,0.16);
+        }
+
 
     </style>
 </head>
 <body>
     <div class="uk-container uk-container-center">
-        <header class="uk-margin-bottom general-navbar uk-margin-top">
+        <header class="uk-margin-bottom uk-margin-top">
             @include('navigation.navigation')
         </header>
 

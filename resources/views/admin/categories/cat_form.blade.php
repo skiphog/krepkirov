@@ -10,11 +10,8 @@
             <i class="uk-sortable-handle uk-icon uk-icon-arrows uk-margin-small-right"></i>
             <img width="75" src="/images/{{ $category->img }}" alt="{{ $category->title }}">
         </div>
-        <div class="uk-width-medium-3-5">
-            {{ $category->title }}
-        </div>
-        <div class="uk-width-medium-1-5">
-            <a href="{{ route('categories.edit',['id' => $category->id]) }}" class="uk-icon-hover uk-icon-cogs" title="Редактировать" data-uk-tooltip></a>
+        <div class="uk-width-medium-4-5">
+            <a href="{{ route('categories.edit',['id' => $category->id]) }}" class="show-product">{{ $category->title }}</a>
         </div>
         {!! Form::hidden('category[]',$category->id) !!}
     </div>

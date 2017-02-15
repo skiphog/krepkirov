@@ -1,4 +1,4 @@
-<nav class="krep-navbar uk-navbar">
+<nav class="krep-navbar uk-navbar uk-margin-small-bottom">
 
     <a class="krep-brand" href="/">
         <img class="uk-margin uk-margin-remove" src="/images/logo.png" width="50" height="50" title="logo" alt="logo">
