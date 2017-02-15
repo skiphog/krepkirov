@@ -45,16 +45,16 @@ class CartComponent
             'sum' => $this->param['sum']
         ]);
 
-        session()->put('total', array_sum(array_column(session('cart'), 'sum')));
-        session()->put('weight', array_sum(array_column(session('cart'), 'weight')));
+        session()->put('total', $this->totalSum('sum'));
+        session()->put('weight', $this->totalSum('weight'));
 
         return [
             'status' => 1,
-            'sum' => number_format((float)$this->param['sum'], 2, ',', ' '),
+            'sum' => $this->numberFormat($this->param['sum']),
             'count' => count(session('cart')),
-            'total' => number_format((float)session('total'), 2, ',', ' '),
-            'small_weight' => number_format((float)$this->param['weight'], 2, ',', ' '),
-            'weight' => number_format((float)session('weight'), 2, ',', ' ')
+            'total' => $this->numberFormat(session('total')),
+            'small_weight' => $this->numberFormat($this->param['weight']),
+            'weight' => $this->numberFormat(session('weight'))
         ];
     }
 
@@ -67,8 +67,8 @@ class CartComponent
             session()->remove('weight');
             $total = $weight = 0;
         } else {
-            session()->put('total', array_sum(array_column(session('cart'), 'sum')));
-            session()->put('weight', array_sum(array_column(session('cart'), 'weight')));
+            session()->put('total', $this->totalSum('sum'));
+            session()->put('weight', $this->totalSum('weight'));
             $total = session('total');
             $weight = session('weight');
         }
@@ -78,9 +78,19 @@ class CartComponent
         return [
             'status' => 0,
             'count' => count(session('cart')),
-            'total' => number_format((float)$total, 2, ',', ' '),
-            'weight' => number_format((float)$weight, 2, ',', ' ')
+            'total' => $this->numberFormat($total),
+            'weight' => $this->numberFormat($weight)
         ];
+    }
+
+    private function numberFormat($number)
+    {
+        return number_format((float)$number, 2, ',', ' ');
+    }
+
+    private function totalSum($item)
+    {
+        return array_sum(array_column(session('cart'), $item));
     }
 
 
