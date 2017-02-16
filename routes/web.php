@@ -38,6 +38,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/price','Admin\PriceController@index');
 
+    Route::post('/price/upload','Admin\PriceController@upload');
+
 });
 
 Route::group(['prefix' => 'cart'], function () {

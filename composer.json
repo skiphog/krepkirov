@@ -7,7 +7,7 @@
     "require": {
         "php": ">=5.6.4",
         "barryvdh/laravel-debugbar": "2.*",
-        "barryvdh/laravel-ide-helper": "2.*",
+        "barryvdh/laravel-ide-helper": "2.2.3",
         "claviska/simpleimage": "^3.2",
         "doctrine/dbal": "2.*",
         "intervention/image": "^2.3",
