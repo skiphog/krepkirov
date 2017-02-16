@@ -5,8 +5,11 @@ Route::get('/', function () {
     return view('pages.index');
 });
 
-Route::get('/product','ProductController@show');
+Route::get('/certificates',function (){
+    return view('pages.certificates');
+});
 
+Route::get('/prices','PriceController@index');
 
 Route::group(['prefix' => 'admin'], function () {
 

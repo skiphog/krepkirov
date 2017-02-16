@@ -151,7 +151,7 @@
             }
         });
 
-        var modal = UIkit.modal('#modal-product');
+        var modal = UIkit.modal('#modal-product',{center:true});
 
         ps.on('click','.show-product', function (e) {
             e.preventDefault();

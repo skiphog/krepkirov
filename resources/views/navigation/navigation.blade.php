@@ -25,8 +25,9 @@
 
     <ul class="uk-navbar-nav">
         <li><a href="{{ url('catalog') }}">Каталог</a></li>
-        <li><a href="{{ url('price') }}">Прайс</a></li>
-        <li><a href="{{ url('about') }}">Контакты</a></li>
+        <li><a href="{{ url('prices') }}">Прайсы</a></li>
+        <li><a href="{{ url('certificates') }}">Сертификаты</a></li>
+        <li><a href="{{ url('contacts') }}">Контакты</a></li>
     </ul>
 
 

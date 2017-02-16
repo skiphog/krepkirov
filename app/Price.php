@@ -20,6 +20,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Price whereSize($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Price whereUrl($value)
  * @mixin \Eloquent
+ * @property string $description
+ * @method static \Illuminate\Database\Query\Builder|\App\Price whereDescription($value)
  */
 class Price extends Model
 {

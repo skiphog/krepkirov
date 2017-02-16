@@ -17,6 +17,7 @@ class CreateTablePrices extends Migration
             $table->increments('id');
             $table->string('file')->unique();
             $table->string('name');
+            $table->string('description',512)->default('');
             $table->string('url');
             $table->unsignedInteger('size');
             $table->timestamp('m_date')->nullable();

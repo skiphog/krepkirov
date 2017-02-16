@@ -65,7 +65,7 @@ class ProductController extends Admin
 
     public function destroy(Request $request)
     {
-        return Product::find($request->input('id'));//->delete();
+        return Product::find($request->input('id'));//todo:: Добавить в продакшн  ->delete();
     }
 
     private function getProductsNoCategory()

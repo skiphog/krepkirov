@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="/images/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png">
     <link rel="stylesheet" href="/css/uikit.almost-flat.min.css">
+    @yield('css')
     <script src="/js/jquery-3.1.1.min.js"></script>
     <script src="/js/uikit.min.js"></script>
     <style>
@@ -26,16 +27,18 @@
             overflow-y: scroll;
             background: url("/images/background.png") #1e87f0;
         }
+        .content,.krep-navbar,.img-cert{
+            border-radius: 4px;
+        }
         .content,.krep-navbar {
             padding: 5px;
-            border-radius: 4px;
         }
 
         .content {
             background-color: rgba(255, 255, 255, 0.9);;
         }
 
-        .cart-category,.krep-navbar,.content,.shadow-box,.show-img:hover  {
+        .cart-category,.krep-navbar,.content,.shadow-box,.show-img:hover,.img-cert {
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
 
@@ -135,7 +138,7 @@
             border: none;
             margin: 0 0 15px 15px;
         }
-        .cart-category:hover{
+        .cart-category:hover,.img-cert:hover{
             box-shadow: 0 14px 25px rgba(0,0,0,0.16);
         }
 
