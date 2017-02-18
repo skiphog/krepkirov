@@ -51,6 +51,15 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => null,
+            'modes' => [
+                'STRICT_TRANS_TABLES',
+                'NO_ZERO_IN_DATE',
+                'NO_ZERO_DATE',
+                'ERROR_FOR_DIVISION_BY_ZERO',
+                'NO_AUTO_CREATE_USER',
+                'NO_ENGINE_SUBSTITUTION',
+                //'ONLY_FULL_GROUP_BY' Мудацкая настройка не позволяла делать группировку, если выборка из двух таблиц при join
+            ],
         ],
 
         'pgsql' => [

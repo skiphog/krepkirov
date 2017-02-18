@@ -32,8 +32,11 @@
 
 
     <div class="uk-navbar-flip">
-        <ul class="uk-navbar-nav">
-            <li><a href="#">Поиск</a></li>
-        </ul>
+        <div class="uk-navbar-content">
+            <div class="uk-search" data-uk-search="{flipDropdown:true, source:'/api/search'}">
+                <input class="uk-search-field" type="search" placeholder="Поиск..." autocomplete="off">
+                <div class="uk-dropdown uk-dropdown-flip uk-dropdown-search"></div>
+            </div>
+        </div>
     </div>
 </nav>

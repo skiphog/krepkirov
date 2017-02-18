@@ -9,6 +9,10 @@ Route::get('/certificates',function (){
     return view('pages.certificates');
 });
 
+Route::get('/contacts',function (){
+    return view('pages.contacts');
+});
+
 Route::get('/prices','PriceController@index');
 
 Route::group(['prefix' => 'admin'], function () {

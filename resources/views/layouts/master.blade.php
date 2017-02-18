@@ -27,7 +27,7 @@
             overflow-y: scroll;
             background: url("/images/background.png") #1e87f0;
         }
-        .content,.krep-navbar,.img-cert{
+        .content,.krep-navbar,.img-cert,.uk-search-field{
             border-radius: 4px;
         }
         .content,.krep-navbar {
@@ -35,7 +35,7 @@
         }
 
         .content {
-            background-color: rgba(255, 255, 255, 0.9);;
+            background-color: rgba(255, 255, 255, 0.9);
         }
 
         .cart-category,.krep-navbar,.content,.shadow-box,.show-img:hover,.img-cert {
@@ -140,6 +140,10 @@
         }
         .cart-category:hover,.img-cert:hover{
             box-shadow: 0 14px 25px rgba(0,0,0,0.16);
+        }
+        .uk-navbar-content{text-shadow:none}
+        .uk-search-field{
+            background-color: #fff;
         }
 
 
