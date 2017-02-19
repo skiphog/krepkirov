@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->char('id_1c', 36)->unique();
             $table->unsignedInteger('category_id')->index()->default(0);
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->decimal('price_1',15,2)->default(0,00)->unsigned();
             $table->decimal('price_2',15,2)->default(0,00)->unsigned();
             $table->decimal('price_3',15,2)->default(0,00)->unsigned();

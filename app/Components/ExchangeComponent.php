@@ -34,7 +34,11 @@ class ExchangeComponent
         foreach ($xml->Каталог->Товары->Товар as $product) {
 
             $data['name'] = (string)$product->Наименование;
-            $data['description'] = (string)$product->Описание ?: '';
+
+            if($product->Описание) {
+                $data['description'] = (string)$product->Описание;
+            }
+
             $data['weight'] = (float)($product->ЗначенияРеквизитов->ЗначениеРеквизита[3]->Значение ?: 0.000);
 
             Product::updateOrCreate(
