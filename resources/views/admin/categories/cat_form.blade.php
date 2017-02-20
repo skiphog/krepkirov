@@ -8,7 +8,7 @@
     <div class="content uk-grid uk-grid-collapse uk-flex-middle uk-margin-small-bottom">
         <div class="uk-width-medium-1-5">
             <i class="uk-sortable-handle uk-icon uk-icon-arrows uk-margin-small-right"></i>
-            <img width="75" src="/images/{{ $category->img }}" alt="{{ $category->title }}">
+            <img width="50" src="/images/{{ $category->img }}" alt="{{ $category->title }}">
         </div>
         <div class="uk-width-medium-4-5">
             <a href="{{ route('categories.edit',['id' => $category->id]) }}" class="show-product">{{ $category->title }}</a>
