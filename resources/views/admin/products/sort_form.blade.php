@@ -9,7 +9,7 @@
             <div class="content uk-grid uk-grid-collapse uk-flex-middle uk-margin-small-bottom">
                 <div class="uk-width-medium-1-6">
                     <i class="uk-sortable-handle uk-icon uk-icon-arrows uk-margin-small-right"></i>
-                    <img src="{{ !empty($product->image) ? '/images/catalog/' . $product->image . '.jpg': '/images/' . config('s.default_img_product') }}" alt="image" width="50">
+                    <img src="{{ !empty($product->image) ? '/images/catalog/' . $product->image . '.jpg': '/images/' . config('s.default_img_product') }}" alt="image" width="40">
                 </div>
                 <div class="uk-width-medium-2-6">
                     <a class="show-product" href="{{ action('Admin\ProductController@edit',['$product' => $product->id]) }}">{{ $product->name }}</a>

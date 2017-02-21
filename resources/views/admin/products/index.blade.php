@@ -83,6 +83,12 @@ $(document).ready(function () {
         searchProduct(d,'get');
     });
 
+    $('#category').selectator({
+        labels: {
+            search: 'Поиск...'
+        }
+    });
+
 
 
 });

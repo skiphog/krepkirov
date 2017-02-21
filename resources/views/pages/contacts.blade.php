@@ -51,7 +51,7 @@
     <div class="content uk-margin-bottom">
         <div class="uk-grid uk-grid-small uk-text-center" data-uk-margin>
             <div class="uk-width-medium-1-2">
-                <div id="map" class="shadow-box" style="width:100%; height:100%"></div>
+                <div id="map" class="shadow-box" style="width:100%; height:404px"></div>
             </div>
             
             <div class="uk-width-medium-1-2">

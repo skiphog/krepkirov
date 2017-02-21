@@ -132,7 +132,7 @@
             <button type="button" class="uk-modal-close uk-close"></button>
             <div class="uk-modal-header"></div>
             <img src="/images/no_image_400.jpg" alt="no image">
-            <div class="uk-modal-footer"></div>
+            <div class="uk-modal-footer uk-text-left"></div>
         </div>
     </div>
 @endsection

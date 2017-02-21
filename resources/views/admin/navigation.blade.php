@@ -8,7 +8,7 @@
     <div class="uk-navbar-flip">
         <ul class="uk-navbar-nav">
             <li><a href="/">На сайт</a></li>
-            <li><a href="#">{{ Auth::user()->name }}</a></li>
+            @include('navigation.admin_nav')
         </ul>
     </div>
 
@@ -20,7 +20,6 @@
         <li><a href="{{ route('categories.index') }}">Категории</a></li>
         <li><a href="{{ action('Admin\ProductController@index') }}">Товары</a></li>
         <li><a href="{{ action('Admin\PriceController@index') }}">Прайсы</a></li>
-        <li><a href="{{ url('about') }}">Заказы</a></li>
-        <li><a href="{{ url('about') }}">Клинеты</a></li>
+        <li><a href="{{ action('Admin\OrdersController@index') }}">Заказы</a></li>
     </ul>
 </nav>

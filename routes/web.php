@@ -47,6 +47,9 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::post('/price/upload', 'Admin\PriceController@upload');
 
+    //todo: make resource Rout
+    Route::get('/orders', 'Admin\OrdersController@index');
+
 });
 
 Route::group(['prefix' => 'cart'], function () {
@@ -73,7 +76,6 @@ Route::group(['prefix' => 'catalog'], function () {
 
 });
 
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');

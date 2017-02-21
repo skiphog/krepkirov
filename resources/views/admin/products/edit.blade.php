@@ -13,13 +13,17 @@
         {{ Form::model($product,['method' => 'PUT', 'action' => ['Admin\ProductController@update', $product->id], 'class' => 'uk-form uk-grid']) }}
         <div class="uk-width-medium-1-3">
 
-            <figure class="uk-overlay uk-overlay-hover">
+            <figure class="uk-overlay uk-overlay-hover uk-margin-bottom">
                 <img id="img-product" src="{{ !empty($product->image) ? '/images/catalog/' . $product->image . '_400.jpg': '/images/' . config('s.default_img_product_400') }}" alt="image" width="400" height="400">
                 {!! Form::hidden('image',null,['id' => 'image']) !!}
                 <figcaption class="uk-overlay-panel uk-overlay-background uk-overlay-bottom uk-overlay-slide-bottom uk-text-center">
                     <a id="change-img" data-img="{{ asset(!empty($product->image) ? '/images/catalog/' . $product->image . '_400.jpg': '/images/' . config('s.default_img_product_400')) }}" data-name="{{ $product->name }}">Загрузить</a>
                 </figcaption>
             </figure>
+
+            <div class="uk-text-center uk-margin uk-text-large">
+                <strong>{{ number_format((float)$product->price_1,2,',',' ') }}</strong> р. {{ $product->unit }}
+            </div>
 
             <div id="warning" class="uk-alert uk-alert-warning uk-text-center" style="display: none">
                 Для того, что бы сохранить картинку, нужно сохранить карточку товара
@@ -47,7 +51,7 @@
 
             <div class="uk-form-row">
                 {!! Form::label('description', 'Описание', ['class' => 'uk-form-label']) !!}
-                {!! Form::textarea('description',null,['class' => 'uk-margin-bottom','rows' => 5]) !!}
+                {!! Form::textarea('description',null,['id' => 'editor','rows' => 10,'class' => 'uk-margin-bottom']) !!}
             </div>
 
             {!! Form::button('Сохранить',['type' => 'submit', 'class' => 'uk-button uk-button-primary uk-margin-top']) !!}
@@ -151,10 +155,18 @@ $(document).ready(function () {
         btnCrop.next().hide();
     }
 
+    $('#editor').trumbowyg({
+        lang: 'ru',
+        btns: [['viewHTML'],['formatting'],'btnGrp-semantic',['link'],
+            ['foreColor'],'btnGrp-justify','btnGrp-lists',['horizontalRule'],['removeformat'],['fullscreen']
+        ]
+    });
 
-
-
-
+    $('#category_id').selectator({
+        labels: {
+            search: 'Поиск...'
+        }
+    });
 
 });
 </script>

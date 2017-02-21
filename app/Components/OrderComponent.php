@@ -41,7 +41,7 @@ class OrderComponent
 
         $this->clearCart();
 
-        return true;
+        return $order;
     }
 
 }

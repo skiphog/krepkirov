@@ -1,4 +1,3 @@
-{{-- todo: Красивая выпадашка с поиском --}}
 <div class="uk-form-row">
     <label class="uk-form-label" for="parent_id">Выберите вложенность</label>
     <select id="parent_id" name="parent_id" class="uk-select">
@@ -47,11 +46,9 @@
 
 <div class="uk-form-row">
     {!! Form::label('text', 'Описание', ['class' => 'uk-form-label']) !!}
-    {!! Form::textarea('text',null,['class' => 'uk-margin-bottom','rows' => 5,'placeholder' => 'Болты стальные с шестигранной головкой и метрической резьбой. Без покрытия.']) !!}
+    {!! Form::textarea('text',null,['id' => 'editor', 'class' => 'uk-margin-bottom','placeholder' => 'Болты стальные с шестигранной головкой и метрической резьбой. Без покрытия.']) !!}
 </div>
 
-
-{{-- todo: Прикрутить EDITOR --}}
 {!! Form::button($nameButton,['type' => 'submit', 'class' => 'uk-button uk-button-primary']) !!}
 
 @push('scripts')
@@ -94,6 +91,19 @@ $(document).ready(function () {
                 $('#img').val(json['file_name']).prev('img').attr('src','/images/' + json['file_name']);
             }
         });
+    });
+
+    $('#editor').trumbowyg({
+        lang: 'ru',
+        btns: [['viewHTML'],['formatting'],'btnGrp-semantic',['superscript', 'subscript'],['link'],
+            ['foreColor'],'btnGrp-justify','btnGrp-lists',['horizontalRule'],['removeformat'],['fullscreen']
+        ]
+    });
+
+    $('#parent_id').selectator({
+        labels: {
+            search: 'Поиск...'
+        }
     });
 
 });

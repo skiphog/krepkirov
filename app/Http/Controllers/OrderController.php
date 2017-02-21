@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Components\OrderComponent;
 use App\Http\Requests\OrderRequest;
+use App\Mail\OrderShip;
+use Mail;
 
 class OrderController extends Controller
 {
@@ -16,11 +18,11 @@ class OrderController extends Controller
 
     public function store(OrderRequest $orderRequest)
     {
-        if($this->order->createOrder($orderRequest) === false) {
+        if(($order = $this->order->createOrder($orderRequest)) === false) {
             return redirect()->action('CartController@show')->withErrors(trans('ru.order.failed'));
         }
 
-        //todo: mail send || listener
+        Mail::to('metiz@krepkirov.ru')->send(new OrderShip($order));
 
         return redirect()->action('CartController@show')->with([
             'status' => trans('ru.order.success')

@@ -13,8 +13,12 @@
     <link rel="stylesheet" href="/css/form-file.almost-flat.min.css">
     <link rel="stylesheet" href="/css/progress.almost-flat.min.css">
     <link rel="stylesheet" href="/css/dropBox.css">
+    <link rel="stylesheet" href="/js/trumbowyg/trumbowyg.min.css">
+    <link rel="stylesheet" href="/js/selectator/fm.selectator.jquery.min.css">
     <script src="/js/jquery-3.1.1.min.js"></script>
     <script src="/js/uikit.min.js"></script>
+    <script src="/js/trumbowyg/trumbowyg.min.js"></script>
+    <script src="/js/selectator/fm.selectator.jquery.js"></script>
     <style>
 
         :focus {
@@ -36,7 +40,7 @@
         }
 
         .content {
-            background-color: rgba(255, 255, 255, 0.9);;
+            background-color: rgba(255, 255, 255, 0.9);
         }
 
         .krep-navbar,.content,.shadow-box,.show-img:hover  {
@@ -48,7 +52,7 @@
         }
 
         .krep-brand,.krep-navbar .uk-navbar-nav > li > a,.krep-navbar > a:hover,.cart-added,.cart-added:focus,.cart-added:active,.cart-added:hover{
-            color: #fff;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .krep-brand {
@@ -134,6 +138,14 @@
         .input-required:after{
             content: ' *';
             color: #ff0000;
+        }
+
+        .selectator_input{
+            height: 35px !important;
+        }
+        .selectator_element.single{
+            height: 27px;
+            padding: 4px 10px !important;
         }
 
 

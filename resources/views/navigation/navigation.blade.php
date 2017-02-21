@@ -6,17 +6,19 @@
     </a>
 
     <div class="uk-navbar-flip">
-        <ul class="uk-navbar-nav">
-            @if (Auth::check())
-                @if(Auth::user()->isAdmin())
-                    <li><a href="{{ url('/admin') }}">Админка</a></li>
-                @endif
-                <li><a href="#">{{ Auth::user()->name }}</a></li>
-            @else
-                <li><a href="{{ url('/login') }}">Войти</a></li>
-                <li><a href="{{ url('/register') }}">Регистрация</a></li>
-            @endif
-        </ul>
+        @if (Auth::check() && Auth::user()->isAdmin())
+            <ul class="uk-navbar-nav">
+                <li><a href="{{ url('/admin') }}">Админка</a></li>
+                @include('navigation.admin_nav')
+            </ul>
+        @else
+            <div class="contacts">
+                <i class="uk-icon-home"></i> г. Киров, ул. Мельничная, 1
+                <br>
+                <i class="uk-icon-phone"></i>
+                <a href="tel:+78332267872">+7 (8332) 26-78-72</a>
+            </div>
+        @endif
     </div>
 
 </nav>

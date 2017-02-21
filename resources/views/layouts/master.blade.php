@@ -46,8 +46,8 @@
             background-color: rgba(30, 135, 240, 0.87);
         }
 
-        .krep-brand,.krep-navbar .uk-navbar-nav > li > a,.krep-navbar > a:hover,.cart-added,.cart-added:focus,.cart-added:active,.cart-added:hover{
-            color: #fff;
+        .krep-brand,.krep-navbar .uk-navbar-nav > li > a,.krep-navbar > a:hover,.cart-added,.cart-added:focus,.cart-added:active,.cart-added:hover,.contacts,.contacts a,.contacts a:hover{
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .krep-brand {
@@ -144,6 +144,13 @@
         .uk-navbar-content{text-shadow:none}
         .uk-search-field{
             background-color: #fff;
+        }
+        .contacts{
+            padding: 2px;
+            line-height: 23px;
+        }
+        .contacts a{
+            text-decoration: none;
         }
 
 
