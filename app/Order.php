@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\RewriteJsonable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -40,6 +41,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Order extends Model
 {
+    use RewriteJsonable;
+
     protected $guarded = [];
 
     public function orderItems()

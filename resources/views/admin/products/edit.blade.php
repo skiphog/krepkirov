@@ -97,7 +97,6 @@
 <script>
 $(document).ready(function () {
 
-    $.ajaxSetup({headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}});
     var modal = UIkit.modal("#m-upload"),cropper,btnCrop = $("#btnCrop"),options={thumbBox:".thumbBox",spinner:".spinner"};
 
     $('#change-img').on('click',function (e) {

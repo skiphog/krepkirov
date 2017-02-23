@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\RewriteJsonable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -43,6 +44,7 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class Category extends Model
 {
+    use RewriteJsonable;
 
     /**
      * Хлебные крошки хранятся как json
@@ -101,16 +103,6 @@ class Category extends Model
         }
 
         return $this->attributes['img'] = $value;
-    }
-
-    /**
-     * Не преобразуем json utf-8 в unicode символы
-     * @param mixed $value
-     * @return string
-     */
-    protected function asJson($value)
-    {
-        return json_encode($value, JSON_UNESCAPED_UNICODE);
     }
 
 }

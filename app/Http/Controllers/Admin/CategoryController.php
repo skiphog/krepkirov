@@ -80,10 +80,7 @@ class CategoryController extends Admin
     {
         $categories = Category::where('parent_id', $request->input('id'))->get();
 
-        return response()->json([
-            'status' => 1,
-            'html' => view('admin.categories.cat_form', compact('categories'))->render()
-        ]);
+        return view('admin.categories.cat_form', compact('categories'));
 
     }
 

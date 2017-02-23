@@ -11,25 +11,23 @@
 
                 <a class="uk-button uk-button-primary uk-margin-bottom" href="{{ route('categories.create') }}">Создать категорию</a>
 
-                <ul id="menu-category" class="uk-nav uk-nav-parent-icon" data-uk-nav="{multiple:true}">
-                    <li class="uk-nav-header">
+                <ul id="menu-category" class="uk-nav">
+                    <li>
                         <a href="{{ route('categories.index') }}">Корневой раздел</a>
+                        <ul class="uk-nav-sub">
+                            @foreach((array)$menus as $menu)
+                                <li>
+                                    <a class="m-sort" href="#" data-id="{{ $menu['id'] }}">{{ $menu['nav_title'] }}</a>
+                                    @if(!empty($menu['children']))
+                                        @foreach((array)$menu['children'] as $child)
+                                            @include('admin.categories.cat_menu',['menu' => $child])
+                                        @endforeach
+                                    @endif
+                                </li>
+                            @endforeach
+
+                        </ul>
                     </li>
-                    @foreach((array)$menus as $menu)
-                        @if(!empty($menu['children']))
-                            <li class="uk-parent">
-                                <a href="#">{{ $menu['nav_title'] }}</a>
-                                <ul class="uk-nav-sub">
-                                    <li>
-                                        <a class="uk-text-bold m-sort" href="#" data-id="{{ $menu['id'] }}">{{ $menu['nav_title'] }} все</a>
-                                    </li>
-                                    @foreach((array)$menu['children'] as $child)
-                                        @include('admin.categories.cat_menu',['menu' => $child])
-                                    @endforeach
-                                </ul>
-                            </li>
-                        @endif
-                    @endforeach
                 </ul>
             </div>
         </div>
@@ -53,20 +51,16 @@
 
     $(document).ready(function () {
 
-        $.ajaxSetup({headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}});
-
         $('#response').on('change.uk.sortable', function () {
             $('#save-category').show();
         });
 
         $('#menu-category').on('click','.m-sort',function (e) {
             e.preventDefault();
-            var id = $(this).data('id');
-            $.getJSON('categories/sort/gets',{id:id},function (json) {
-               if(json['status'] === 1) {
-                   $('#response').html(json['html']);
-               }
-            })
+
+            getAjax('categories/sort/gets', 'get', 'html', function (h) {
+                $('#response').html(h);
+            }, [{name:'id',value:$(this).data('id')}]);
 
         });
 

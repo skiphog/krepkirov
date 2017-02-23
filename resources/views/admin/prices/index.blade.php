@@ -49,8 +49,6 @@
 <script>
 $(document).ready(function () {
 
-    $.ajaxSetup({headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}});
-
     var progressbar = $("#progressbar"),
         bar         = progressbar.find('.uk-progress-bar'),
         settings    = {

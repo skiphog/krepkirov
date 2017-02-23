@@ -20,7 +20,7 @@
                 </div>
                 <div class="uk-form-row">
                     <div class="uk-form-icon">
-                        <i class="uk-icon-certificate"></i>
+                        <i class="uk-icon-asterisk"></i>
                         {{ Form::password('password',['class' => 'uk-form-large uk-form-width-medium', 'required']) }}
                     </div>
                 </div>

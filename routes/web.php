@@ -47,8 +47,9 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::post('/price/upload', 'Admin\PriceController@upload');
 
-    //todo: make resource Rout
-    Route::get('/orders', 'Admin\OrdersController@index');
+    Route::resource('/orders', 'Admin\OrdersController', ['only' => [
+        'index', 'show', 'update'
+    ]]);
 
 });
 

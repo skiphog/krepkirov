@@ -15,7 +15,7 @@
         @foreach($products as $product)
             <tr>
                 <td><img src="{{ !empty($product->image) ? '/images/catalog/' . $product->image . '.jpg': '/images/' . config('s.default_img_product') }}" alt="image" width="40"></td>
-                <td><a class="show-product" target="_blank" href="{{ action('Admin\ProductController@edit',['$product' => $product->id]) }}">{{ $product->name }}</a></td>
+                <td><a class="show-product" href="{{ action('Admin\ProductController@edit',['$product' => $product->id]) }}">{{ $product->name }}</a></td>
                 <td>{{ !empty($product->title) ? $product->title : 'Без категории' }}</td>
                 <td>{{ number_format((float)$product->weight, 2, ',', ' ') }} кг</td>
                 <td>{{ $product->unit }}</td>

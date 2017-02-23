@@ -72,7 +72,6 @@ $(document).ready(function () {
         data.append("categoryUpload", file);
 
         $.ajax({
-            headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
             url: '/admin/upload',
             type: 'post',
             data: data,

@@ -35,7 +35,6 @@
 <script src="/js/sortable.min.js"></script>
 <script>
 $(document).ready(function () {
-    $.ajaxSetup({headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}});
     var response = $('#response'),t;
 
     function searchProduct(a,b,c) {
