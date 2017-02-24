@@ -46,7 +46,7 @@
             background-color: rgba(30, 135, 240, 0.87);
         }
 
-        .krep-brand,.krep-navbar .uk-navbar-nav > li > a,.krep-navbar > a:hover,.cart-added,.cart-added:focus,.cart-added:active,.cart-added:hover,.contacts,.contacts a,.contacts a:hover{
+        .krep-brand,.krep-navbar .uk-navbar-nav > li > a,.krep-navbar > a:hover,.cart-added,.cart-added:focus,.cart-added:active,.cart-added:hover,.contacts,.contacts a,.contacts a:hover,.copyright,.copyright a{
             color: rgba(255, 255, 255, 0.9);
         }
 
@@ -66,7 +66,7 @@
             text-decoration: none;
         }
 
-        .krep-navbar .uk-navbar-nav > li:hover > a, .krep-navbar .uk-navbar-nav > li > a:focus,.krep-navbar .uk-navbar-nav > li > a:active, .krep-navbar .uk-navbar-nav > li.uk-open > a {
+        .krep-navbar .uk-navbar-nav > li:hover > a, .krep-navbar .uk-navbar-nav > li > a:focus,.krep-navbar .uk-navbar-nav > li > a:active, .krep-navbar .uk-navbar-nav > li.uk-open > a,.copyright a:hover {
             background-color: transparent;
             color: #ffff00;
         }
@@ -173,7 +173,7 @@
         </aside>
 
         <footer>
-            @yield('footer')
+            @include('footer.footer')
         </footer>
     </div>
 

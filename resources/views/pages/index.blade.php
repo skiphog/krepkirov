@@ -2,6 +2,10 @@
 
 @section('title','Крепежные материалы г. Киров - Оптовая и розничная продажа крепежа.')
 @section('description','Купить крепеж оптом! Болты, гвозди, гайки, шайбы, саморезы и многое другое в широком ассортименте.')
+@section('css')
+    <link rel="stylesheet" href="/css/slider.almost-flat.min.css">
+    <link rel="stylesheet" href="/css/slidenav.almost-flat.min.css">
+@endsection
 
 @section('content')
 
@@ -11,9 +15,61 @@
     <div class="content uk-text-center uk-margin-bottom">
         <p class="uk-text-large">ООО «Крепежные материалы» г. Киров</p>
         <p class="uk-text-large">Вы всегда найдете крепеж у нас в ассортименте</p>
+    </div>
 
-        <!-- Тут какая нить фигня -->
+    <div class="uk-text-center uk-margin-bottom uk-grid" data-uk-margin>
+        <div class="uk-width-small-1-3">
+            <figure class="uk-overlay uk-overlay-hover">
+                <img class="shadow-box uk-overlay-spin" src="/images/baza/gvozdi.jpg" width="640" height="480" alt="Гвозди">
+                <div class="uk-overlay-panel uk-overlay-fade uk-overlay-background">
+                    <h3>Крепеж</h3>
+                    <p>Анкеры, саморезы, метрический крепеж</p>
+                </div>
+                <a class="uk-position-cover" href="{{ url('catalog') }}"></a>
+            </figure>
+        </div>
+        <div class="uk-width-small-1-3">
+            <figure class="uk-overlay uk-overlay-hover">
+                <img class="shadow-box uk-overlay-spin" src="/images/baza/l2.jpg" width="640" height="480" alt="Метизы">
+                <div class="uk-overlay-panel uk-overlay-fade uk-overlay-background">
+                    <h3>Фурнитура</h3>
+                    <p>Мебельная и дверная</p>
+                </div>
+                <a class="uk-position-cover" href="{{ url('catalog/furnitura') }}"></a>
+            </figure>
+        </div>
+        <div class="uk-width-small-1-3">
+            <figure class="uk-overlay uk-overlay-hover">
+                <img class="shadow-box uk-overlay-spin" src="/images/baza/instrum.jpg" width="640" height="480" alt="Инструмент">
+                <div class="uk-overlay-panel uk-overlay-fade uk-overlay-background">
+                    <h3>Инструмент</h3>
+                    <p>От отвертки до бензопилы</p>
+                </div>
+                <a class="uk-position-cover" href="{{ url('catalog/instrument') }}"></a>
+            </figure>
+        </div>
+    </div>
 
+    <div class="content uk-margin-bottom">
+        <div class="uk-slidenav-position" data-uk-slider="{autoplay: true,autoplayInterval:3000}">
+
+            <div class="uk-slider-container">
+                <ul class="uk-slider uk-grid uk-grid-width-small-1-4 uk-grid-width-medium-1-6 uk-grid-small" style="min-height:110px">
+
+                    @foreach($categories as $category)
+                        <li>
+                            <a class="content" href="/catalog/{{ $category->full_url }}">
+                                <img src="/images/{{  $category->img }}" alt="{{ $category->title }}">
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+
+            <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slider-item="previous" draggable="false"></a>
+            <a href="#" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slider-item="next" draggable="false"></a>
+
+        </div>
     </div>
 
     <div class="content uk-text-center uk-margin-bottom">
@@ -88,3 +144,7 @@
     </div>
 
 @endsection
+
+@push('scripts')
+<script src="/js/slider.min.js"></script>
+@endpush

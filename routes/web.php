@@ -1,9 +1,6 @@
 <?php
 
-//todo: Перенести в контроллер
-Route::get('/', function () {
-    return view('pages.index');
-});
+Route::get('/', 'IndexController@index');
 
 Route::get('/certificates', function () {
     return view('pages.certificates');
