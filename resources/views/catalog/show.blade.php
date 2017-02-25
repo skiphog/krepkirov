@@ -103,7 +103,7 @@
                             @endif
 
                             <div class="uk-width-medium-1-6">
-                                {{ number_format((float)$product->price_1,2,',',' ') }} р. {{ $product->unit }}
+                                <strong>{{ number_format((float)$product->price_1,2,',',' ') }}</strong> р. {{ $product->unit }}
                             </div>
                             <div class="uk-width-medium-1-6">
                                 @if(session()->has('cart.' . $product->id))

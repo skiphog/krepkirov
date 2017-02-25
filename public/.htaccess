@@ -1,3 +1,10 @@
+Options All -ExecCGI -Indexes -Includes +FollowSymLinks
+
+DirectoryIndex index.php
+ServerSignature Off
+AddDefaultCharset utf-8
+DefaultLanguage ru
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews
@@ -5,9 +12,19 @@
 
     RewriteEngine On
 
+    RewriteBase /
+
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Redirect www.site.com => site.com
+    #RewriteCond %{HTTP_HOST} ^www.krepkirov.ru
+    #RewriteRule ^(.*)$ http://krepkirov.ru/$1 [R=301,L]
+
+    # Redirect site.com/index.php => site.com
+    #RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+    #RewriteRule ^index\.php$ http://krepkirov.ru/ [R=301,L]
 
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
@@ -18,3 +35,52 @@
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 </IfModule>
+
+<ifModule mod_php.c>
+    php_value	upload_max_filesize	32M
+    php_value	post_max_size		10M
+    php_value	default_charset utf-8
+    php_value	max_execution_time 200
+    php_value   date.timezone "Europe/Moscow"
+</ifModule>
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript
+</IfModule>
+
+<IfModule mod_gzip.c>
+	mod_gzip_on         Yes
+	mod_gzip_dechunk    Yes
+	mod_gzip_item_include file		\.(html?|txt|css|js|php|pl)$
+	mod_gzip_item_include mime		^text\.*
+	mod_gzip_item_include mime		^application/x-javascript.*
+	mod_gzip_item_exclude mime		^image\.*
+	mod_gzip_item_exclude rspheader	^Content-Encoding:.*gzip.*
+</IfModule>
+
+<IfModule mod_headers.c>
+
+    <FilesMatch "\.(js|css|txt|flv|swf|ico|gif|jpg|jpeg|png)$">
+        Header set Cache-Control "max-age=2592000"
+    </FilesMatch>
+    Header append Vary User-Agent
+    Header append Cache-Control "public"
+    FileETag MTime Size
+
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 week"
+    ExpiresByType image/ico "access plus 1 years"
+    ExpiresByType text/css "access plus 1 years"
+    ExpiresByType text/javascript "access plus 1 years"
+    ExpiresByType image/gif "access plus 1 years"
+    ExpiresByType image/jpg "access plus 1 years"
+    ExpiresByType image/jpeg "access plus 1 years"
+    ExpiresByType image/bmp "access plus 1 years"
+    ExpiresByType image/png "access plus 1 years"
+</IfModule>
+
+
+

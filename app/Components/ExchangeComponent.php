@@ -35,7 +35,7 @@ class ExchangeComponent
 
             $data['name'] = (string)$product->Наименование;
 
-            if($product->Описание) {
+            if ($product->Описание) {
                 $data['description'] = (string)$product->Описание;
             }
 

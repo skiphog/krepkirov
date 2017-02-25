@@ -3,8 +3,8 @@
 namespace App;
 
 use App\Traits\RewriteJsonable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * App\Category
@@ -56,21 +56,6 @@ class Category extends Model
 
     protected $guarded = [];
 
-
-    /**
-     * @todo Убрать эту фигю отсюда!!!! Доавить простой scope
-     * Все запросы по умолчанию включают в себя where is_show = 1
-     * @return void
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::addGlobalScope('sort', function (Builder $builder) {
-            $builder->orderBy('sort', 'asc');
-        });
-    }
-
     /**
      * Получаем дерево категорий
      * @return array
@@ -94,6 +79,20 @@ class Category extends Model
         unset($node);
 
         return $tree;
+    }
+
+    /**
+     * @todo Убрать эту фигю отсюда!!!! Доавить простой scope
+     * Все запросы по умолчанию включают в себя where is_show = 1
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('sort', function (Builder $builder) {
+            $builder->orderBy('sort', 'asc');
+        });
     }
 
     public function setImgAttribute($value)

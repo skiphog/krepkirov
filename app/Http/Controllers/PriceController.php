@@ -11,6 +11,6 @@ class PriceController extends Controller
     {
         $prices = Price::all();
 
-        return view('pages.price',compact('prices'));
+        return view('pages.price', compact('prices'));
     }
 }

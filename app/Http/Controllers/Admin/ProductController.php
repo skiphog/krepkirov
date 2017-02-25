@@ -22,7 +22,7 @@ class ProductController extends Admin
     {
         $categories = Category::getTreeCategories();
 
-        return view('admin.products.edit', compact('product','categories'));
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
     public function search(Request $request)
@@ -65,7 +65,7 @@ class ProductController extends Admin
 
     public function destroy(Request $request)
     {
-        return Product::find($request->input('id'));//todo:: Добавить в продакшн  ->delete();
+        return Product::find($request->input('id'))->delete();
     }
 
     private function getProductsNoCategory()

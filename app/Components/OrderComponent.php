@@ -34,7 +34,7 @@ class OrderComponent
             ];
         }
 
-        if(\DB::table('order_items')->insert($data) === false) {
+        if (\DB::table('order_items')->insert($data) === false) {
             $order->delete();
             return false;
         }

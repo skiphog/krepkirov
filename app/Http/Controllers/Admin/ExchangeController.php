@@ -50,7 +50,7 @@ class ExchangeController extends Controller
      */
     public function file()
     {
-        if(request()->input('type') === 'sale') {
+        if (request()->input('type') === 'sale') {
             return 'success' . PHP_EOL;
         }
 

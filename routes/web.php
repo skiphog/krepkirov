@@ -2,13 +2,9 @@
 
 Route::get('/', 'IndexController@index');
 
-Route::get('/certificates', function () {
-    return view('pages.certificates');
-});
+Route::get('/certificates', 'IndexController@certificates');
 
-Route::get('/contacts', function () {
-    return view('pages.contacts');
-});
+Route::get('/contacts', 'IndexController@contacts');
 
 Route::get('/prices', 'PriceController@index');
 
@@ -43,6 +39,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/price', 'Admin\PriceController@index');
 
     Route::post('/price/upload', 'Admin\PriceController@upload');
+
+    Route::get('/makeSiteMap', 'Admin\AdminController@makeSiteMap');
 
     Route::resource('/orders', 'Admin\OrdersController', ['only' => [
         'index', 'show', 'update'

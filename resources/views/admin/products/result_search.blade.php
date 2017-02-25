@@ -16,7 +16,13 @@
             <tr>
                 <td><img src="{{ !empty($product->image) ? '/images/catalog/' . $product->image . '.jpg': '/images/' . config('s.default_img_product') }}" alt="image" width="40"></td>
                 <td><a class="show-product" href="{{ action('Admin\ProductController@edit',['$product' => $product->id]) }}">{{ $product->name }}</a></td>
-                <td>{{ !empty($product->title) ? $product->title : 'Без категории' }}</td>
+                <td>
+                    @if(!empty($product->title))
+                        {{ $product->title }}
+                    @else
+                        <i class="uk-icon-external-link-square uk-text-danger"></i> Без категории
+                    @endif
+                </td>
                 <td>{{ number_format((float)$product->weight, 2, ',', ' ') }} кг</td>
                 <td>{{ $product->unit }}</td>
                 <td>{{ number_format((float)$product->price_1, 2, ',', ' ') }}</td>

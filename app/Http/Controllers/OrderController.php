@@ -18,7 +18,7 @@ class OrderController extends Controller
 
     public function store(OrderRequest $orderRequest)
     {
-        if(($order = $this->order->createOrder($orderRequest)) === false) {
+        if (($order = $this->order->createOrder($orderRequest)) === false) {
             return redirect()->action('CartController@show')->withErrors(trans('ru.order.failed'));
         }
 

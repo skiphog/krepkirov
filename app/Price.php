@@ -34,6 +34,6 @@ class Price extends Model
 
     public function getSizeAttribute($value)
     {
-        return round($value /1024 /1024,2);
+        return round($value / 1024 / 1024, 2);
     }
 }
