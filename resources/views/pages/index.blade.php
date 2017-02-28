@@ -98,7 +98,7 @@
         </div>
     </div>
 
-    <div class="uk-grid uk-margin-bottom" data-uk-grid-margin>
+    <div class="uk-grid uk-margin-small-bottom">
         <div class="uk-width-medium-1-2" data-uk-scrollspy="{cls:'uk-animation-slide-left'}">
             <div class="content carts">
                 <h3><i class="uk-icon-search"></i> Вы найдете у нас именно то, что Вам нужно!</h3>
@@ -113,7 +113,7 @@
         </div>
     </div>
 
-    <div class="uk-grid uk-margin-bottom" data-uk-grid-margin>
+    <div class="uk-grid uk-margin-small-bottom uk-margin-top-remove">
         <div class="uk-width-medium-1-2" data-uk-scrollspy="{cls:'uk-animation-slide-left'}">
             <div class="content carts">
                 <h3><i class="uk-icon-check"></i> Вам больше не нужно искать спец крепеж!</h3>
@@ -128,7 +128,7 @@
         </div>
     </div>
 
-    <div class="uk-grid uk-margin-bottom" data-uk-grid-margin>
+    <div class="uk-grid uk-margin-small-bottom uk-margin-top-remove">
         <div class="uk-width-medium-1-2" data-uk-scrollspy="{cls:'uk-animation-slide-left'}">
             <div class="content carts">
                 <h3><i class="uk-icon-clock-o"></i> Вы экономите не только деньги, но и время!</h3>

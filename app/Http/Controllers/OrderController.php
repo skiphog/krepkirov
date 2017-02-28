@@ -22,7 +22,7 @@ class OrderController extends Controller
             return redirect()->action('CartController@show')->withErrors(trans('ru.order.failed'));
         }
 
-        Mail::to('metiz@krepkirov.ru')->send(new OrderShip($order));
+        Mail::to('angor-43@mail.ru')->send(new OrderShip($order));
 
         return redirect()->action('CartController@show')->with([
             'status' => trans('ru.order.success')

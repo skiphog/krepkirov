@@ -11,5 +11,5 @@
 </nav>
 
 <div class="krep-navbar uk-navbar uk-margin-bottom uk-text-center copyright">
-    &copy; {{ \Carbon\Carbon::now()->format('Y') }} <a href="https://vk.com/skiphog" target="_blank" rel="nofollow">Разработка и техническая поддержка skiphog</a>
+    &copy; {{ \Carbon\Carbon::now()->format('Y') }} <a href="https://vk.com/skiphog" target="_blank" rel="nofollow" onclick="yaCounter17497954.reachGoal('skiphog'); return true;">Разработка и техническая поддержка skiphog</a>
 </div>

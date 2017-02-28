@@ -77,6 +77,19 @@
             @endif
 
             @if(!$products->isEmpty())
+
+
+                <div id="change-price" class="uk-margin-bottom uk-form uk-clearfix" data-uk-sticky="{top:10}">
+                    <div class="content uk-float-right uk-margin-large-right" data-uk-button-radio>
+                        <i class="uk-icon-question-circle uk-icon-small uk-margin-right uk-margin-left" data-uk-tooltip="{pos:'bottom'}" title="Тип цены зависит от объема закупки, формы оплаты и сложности комплектации"></i>
+                        <button class="b-price uk-button uk-active" value="0">розница</button>
+                        <button class="b-price uk-button" value="1">мелкий опт</button>
+                        <button class="b-price uk-button" value="2">опт</button>
+                    </div>
+                </div>
+
+
+
                 <div id="product" class="content uk-margin-bottom uk-form">
 
                     @foreach($products as $product)
@@ -103,7 +116,9 @@
                             @endif
 
                             <div class="uk-width-medium-1-6">
-                                <strong>{{ number_format((float)$product->price_1,2,',',' ') }}</strong> р. {{ $product->unit }}
+                                <strong data-prices="{{ number_format((float)$product->price_1,2,',',' ') }}-{{ number_format((float)$product->price_2,2,',',' ') }}-{{ number_format((float)$product->price_3,2,',',' ') }}">
+                                    {{ number_format((float)$product->price_1,2,',',' ') }}
+                                </strong> р. {{ $product->unit }}
                             </div>
                             <div class="uk-width-medium-1-6">
                                 @if(session()->has('cart.' . $product->id))
@@ -167,6 +182,17 @@
             $(this).parent().next().find('.show-product').click();
         });
 
+        var p = ps.find('[data-prices]');
+
+        $('#change-price').on('click','.b-price',function () {
+            changePrice($(this).val());
+        });
+
+        function changePrice(i) {
+            p.each(function (k, v) {
+                v.innerHTML = v.dataset.prices.split('-')[i];
+            });
+        }
 
 
         $('.change-cart').on('click', function (e) {

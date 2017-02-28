@@ -8,7 +8,7 @@
     <meta name="description" content="@yield('description')">
     <link rel="shortcut icon" href="/images/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png">
-    <link rel="stylesheet" href="/css/uikit.almost-flat.min.css">
+    <link rel="stylesheet" href="/css/uikit.almost-flat.min.v2.css">
     <link rel="stylesheet" href="/js/nprogress/nprogress.min.css">
 
     <link rel="stylesheet" href="/css/sortable.almost-flat.min.css">
@@ -21,7 +21,7 @@
     @yield('css')
 
     <script src="/js/jquery-3.1.1.min.js"></script>
-    <script src="/js/uikit.min.js"></script>
+    <script src="/js/uikit.min.v2.js"></script>
     <script src="/js/nprogress/nprogress.min.js"></script>
 
     <script src="/js/trumbowyg/trumbowyg.min.js"></script>

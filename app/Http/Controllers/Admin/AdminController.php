@@ -30,8 +30,9 @@ class AdminController extends Admin
             'categories' => Category::latest()->take(5)->get(),
 
             'o_count' => Order::count('*'),
-            'orders' => Order::latest()->take(6)->get(),
+            'orders' => Order::latest()->take(9)->get(),
 
+            'c_prices' => Price::count('*'),
             'prices' => Price::all()
         ]);
     }

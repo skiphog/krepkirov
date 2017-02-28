@@ -46,6 +46,8 @@ class ExchangeComponent
                 $data
             );
 
+            unset($data['description']);
+
         }
 
         return 'Выгрузка сведений о товарах завершена';

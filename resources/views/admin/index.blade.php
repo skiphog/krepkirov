@@ -54,7 +54,7 @@
 
         <div class="uk-width-medium-1-2">
             <div class="content">
-                <h3>Прайсов всего: <strong>6</strong></h3>
+                <h3>Прайсов всего: <strong>{{ $c_prices }}</strong></h3>
                 <table class=" content uk-table uk-table-middle">
                     <caption>Время последней загрузки</caption>
                     @foreach($prices as $price)
@@ -75,7 +75,7 @@
             <div class="content">
                 <h3>Заказов всего: <strong>{{ $o_count }}</strong></h3>
                 <table id="order" class="content uk-table uk-table-middle">
-                    <caption>Последние шесть заказов</caption>
+                    <caption>Последние заказы</caption>
                     @foreach($orders as $order)
                         <tr>
                             <td class="uk-text-center">{{ $order->id }}</td>
