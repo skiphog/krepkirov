@@ -6,6 +6,7 @@
         <li><a href="{{ url('prices') }}">Прайсы</a></li>
         <li><a href="{{ url('certificates') }}">Сертификаты</a></li>
         <li><a href="{{ url('contacts') }}">Контакты</a></li>
+        <li><a href="{{ url('policy') }}">Персональные данные</a></li>
     </ul>
 
 </nav>

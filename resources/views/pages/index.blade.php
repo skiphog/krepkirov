@@ -99,13 +99,13 @@
     </div>
 
     <div class="uk-grid uk-margin-small-bottom">
-        <div class="uk-width-medium-1-2" data-uk-scrollspy="{cls:'uk-animation-slide-left'}">
+        <div class="uk-width-medium-1-2">
             <div class="content carts">
                 <h3><i class="uk-icon-search"></i> Вы найдете у нас именно то, что Вам нужно!</h3>
                 <p>Наш ассортимент удовлетворяет практически любые запросы. <b>10 000</b> наименований позиций в прайсе соответствует наличию складским запасам на <b>98%</b>.</p>
             </div>
         </div>
-        <div class="uk-width-medium-1-2" data-uk-scrollspy="{cls:'uk-animation-slide-right'}">
+        <div class="uk-width-medium-1-2">
             <div class="content carts">
                 <h3><i class="uk-icon-balance-scale"></i> Удобная фасовка для магазинов, организаций!</h3>
                 <p>От промкоробок и до любой, наиболее выгодной для Вас упаковки.</p>
@@ -114,13 +114,13 @@
     </div>
 
     <div class="uk-grid uk-margin-small-bottom uk-margin-top-remove">
-        <div class="uk-width-medium-1-2" data-uk-scrollspy="{cls:'uk-animation-slide-left'}">
+        <div class="uk-width-medium-1-2">
             <div class="content carts">
                 <h3><i class="uk-icon-check"></i> Вам больше не нужно искать спец крепеж!</h3>
                 <p>Доверьте это нам! Более <b>10</b>-ти лет опыта работы с крепежом позволяет эффективно ориентироваться на метизном рынке. Мы найдем для Вас любой крепеж и привезем его в течение недели.</p>
             </div>
         </div>
-        <div class="uk-width-medium-1-2" data-uk-scrollspy="{cls:'uk-animation-slide-right'}">
+        <div class="uk-width-medium-1-2">
             <div class="content carts">
                 <h3><i class="uk-icon-rub"></i> Вы можете рассчитывать на низкие цены!</h3>
                 <p>Мы следим за тем, что бы наши цены оставались адекватными. Но! Даже если Вы нашли где-то дешевле, <b>ЗВОНИТЕ!</b> - договоримся...</p>
@@ -129,13 +129,13 @@
     </div>
 
     <div class="uk-grid uk-margin-small-bottom uk-margin-top-remove">
-        <div class="uk-width-medium-1-2" data-uk-scrollspy="{cls:'uk-animation-slide-left'}">
+        <div class="uk-width-medium-1-2">
             <div class="content carts">
                 <h3><i class="uk-icon-clock-o"></i> Вы экономите не только деньги, но и время!</h3>
                 <p>Моментальное обслуживание, начиная с выписки и оканчивая получением товара. Офис и склад находятся <b>в одном месте</b>.</p>
             </div>
         </div>
-        <div class="uk-width-medium-1-2" data-uk-scrollspy="{cls:'uk-animation-slide-right'}">
+        <div class="uk-width-medium-1-2">
             <div class="content carts">
                 <h3><i class="uk-icon-bus"></i> Вам не нужно беспокоиться о доставке!</h3>
                 <p>Мы скомплектуем товар и доставим его до вашего склада в Кирове <b>Бесплатно!</b></p>

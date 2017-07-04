@@ -67,19 +67,30 @@ DefaultLanguage ru
     #Header append Cache-Control "public"
     #FileETag MTime Size
 
+    <FilesMatch "\.(js|css|txt|flv|swf|ico|gif|jpg|jpeg|png)$">
+        #Header set Cache-Control "max-age=2592000"
+
+    </FilesMatch>
+
 </IfModule>
 
 <IfModule mod_expires.c>
-    ExpiresActive On
-    ExpiresDefault "access plus 1 week"
-    ExpiresByType image/ico "access plus 1 years"
-    ExpiresByType text/css "access plus 1 years"
-    ExpiresByType text/javascript "access plus 1 years"
-    ExpiresByType image/gif "access plus 1 years"
-    ExpiresByType image/jpg "access plus 1 years"
-    ExpiresByType image/jpeg "access plus 1 years"
-    ExpiresByType image/bmp "access plus 1 years"
-    ExpiresByType image/png "access plus 1 years"
+
+        ## Запретить кеширование
+        #ExpiresActive On
+        #ExpiresDefault A1
+        #Header append Cache-Control must-revalidate
+        ##
+
+    #ExpiresDefault "access plus 1 week"
+    #ExpiresByType image/ico "access plus 1 years"
+    #ExpiresByType text/css "access plus 1 years"
+    #ExpiresByType text/javascript "access plus 1 years"
+    #ExpiresByType image/gif "access plus 1 years"
+    #ExpiresByType image/jpg "access plus 1 years"
+    #ExpiresByType image/jpeg "access plus 1 years"
+    #ExpiresByType image/bmp "access plus 1 years"
+    #ExpiresByType image/png "access plus 1 years"
 </IfModule>
 
 

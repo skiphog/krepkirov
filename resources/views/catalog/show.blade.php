@@ -121,10 +121,10 @@
                                 </strong> р. {{ $product->unit }}
                             </div>
                             <div class="uk-width-medium-1-6">
-                                @if(session()->has('cart.' . $product->id))
-                                    <input class="input-cart krep-input" type="number" value="{{ session()->get('cart.' . $product->id .'.qty') }}" placeholder="0">
+                                @if(array_key_exists($product->id, $cart))
+                                    <input class="input-cart krep-input" type="number" value="{{ $cart[$product->id]['qty'] }}" placeholder="0">
                                     <a data-id="{{ $product->id }}" href="#" class="change-cart uk-icon-button uk-icon-shopping-basket cart-added" title="Заказать"></a>
-                                    <div>{{ number_format((float)session('cart.' . $product->id . '.sum'),2,',',' ') }} р. - {{ number_format((float)session('cart.' . $product->id . '.weight'),2,',',' ') }} кг</div>
+                                    <div>{{ number_format((float)$cart[$product->id]['total_sum'],2,',',' ') }} р. - {{ number_format((float)$cart[$product->id]['weight'],2,',',' ') }} кг</div>
                                 @else
                                     <input class="input-cart krep-input" type="number" value="" placeholder="0">
                                     <a data-id="{{ $product->id }}" href="#" class="change-cart uk-icon-button uk-icon-shopping-basket" title="Заказать"></a>
@@ -154,100 +154,101 @@
 
 @push('scripts')
 <Script>
-    $(document).ready(function () {
+  $(document).ready(function () {
 
-        var total = $('#total'), ct = $('#cart-total'), ps = $('#product');
+    var total = $('#total'), ct = $('#cart-total'), ps = $('#product')
 
-        $.ajaxSetup({headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}});
+    $.ajaxSetup({headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'}})
 
-        ps.on('keydown','.input-cart',function (e) {
-            if(e.keyCode === 13) {
-                $(this).next().click().parent().parent().next().find('input').focus();
-            }
-        });
+    ps.on('keydown', '.input-cart', function (e) {
+      if (e.keyCode === 13) {
+        $(this).next().click().parent().parent().next().find('input').focus()
+      }
+    })
 
-        var modal = UIkit.modal('#modal-product',{center:true});
+    var modal = UIkit.modal('#modal-product', {center: true})
 
-        ps.on('click','.show-product', function (e) {
-            e.preventDefault();
-            var a = $(this);
-            console.log(a.data('img'),a.next().html());
-            modal.find('.uk-modal-header').html('<h2>' + a.html() + '</h2>')
-                .next('img').attr('src',a.data('img'))
-                .next('div').html(a.next().html());
-            modal.show();
-        });
+    ps.on('click', '.show-product', function (e) {
+      e.preventDefault()
+      var a = $(this)
+      console.log(a.data('img'), a.next().html())
+      modal.find('.uk-modal-header').
+        html('<h2>' + a.html() + '</h2>').
+        next('img').
+        attr('src', a.data('img')).
+        next('div').
+        html(a.next().html())
+      modal.show()
+    })
 
-        ps.on('click','.show-img', function () {
-            $(this).parent().next().find('.show-product').click();
-        });
+    ps.on('click', '.show-img', function () {
+      $(this).parent().next().find('.show-product').click()
+    })
 
-        var p = ps.find('[data-prices]');
+    var p = ps.find('[data-prices]')
 
-        $('#change-price').on('click','.b-price',function () {
-            changePrice($(this).val());
-        });
+    $('#change-price').on('click', '.b-price', function () {
+      changePrice($(this).val())
+    })
 
-        function changePrice(i) {
-            p.each(function (k, v) {
-                v.innerHTML = v.dataset.prices.split('-')[i];
-            });
-        }
+    function changePrice (i) {
+      p.each(function (k, v) {
+        v.innerHTML = v.dataset.prices.split('-')[i]
+      })
+    }
 
+    $('.change-cart').on('click', function (e) {
+      e.preventDefault()
+      var a = $(this)
 
-        $('.change-cart').on('click', function (e) {
-            e.preventDefault();
-            var a = $(this);
+      var id = a.data('id') * 1
+      if (isNaN(id) || id === 0 || id === '') {
+        return
+      }
 
-            var id = a.data('id') * 1;
-            if(isNaN(id) || id === 0 || id === '') {
-                return;
-            }
+      var qtw = a.prev('input').val() * 1
+      if (isNaN(qtw)) {
+        return
+      }
 
-            var qtw = a.prev('input').val() * 1;
-            if(isNaN(qtw)) {
-                return;
-            }
+      a.addClass('uk-animation-scale-down')
 
-            a.addClass('uk-animation-scale-down');
+      $.ajax({
+        url: '/cart/change',
+        type: 'post',
+        dataType: 'json',
+        data: {id: id, qtw: qtw},
+        success: function (json) {
 
-            $.ajax({
-                url: '/cart/change',
-                type: 'post',
-                dataType:'json',
-                data:{id:id,qtw:qtw},
-                success: function (json) {
+          if (json['status'] === 1) {
+            a.addClass('cart-added')
+            a.next('div').html('' + json['sum'] + ' р. - ' + json['small_weight'] + ' кг')
 
-                    if(json['status'] === 1) {
-                        a.addClass('cart-added');
-                        a.next('div').html('' + json['sum'] + ' р. - ' + json['small_weight'] + ' кг');
+          } else {
+            a.removeClass('cart-added')
+            a.next('div').html('')
+          }
 
-                    }else{
-                        a.removeClass('cart-added');
-                        a.next('div').html('');
-                    }
+          if (json['count'] === 0) {
+            ct.hide()
+          } else {
+            ct.show()
+          }
 
-                    if(json['count'] === 0) {
-                        ct.hide();
-                    }else {
-                        ct.show();
-                    }
+          total.html(json['total']).next().next().html(json['weight'])
 
-                    total.html(json['total']).next().next().html(json['weight']);
+          setTimeout(function () {
+            a.removeClass('uk-animation-scale-down')
+          }, 500)
+        },
+        error: function () {
+          a.removeClass('cart-added')
+          a.prev('input').val(0)
 
-                    setTimeout(function () {
-                        a.removeClass('uk-animation-scale-down');
-                    },500)
-                },
-                error:function () {
-                    a.removeClass('cart-added');
-                    a.prev('input').val(0);
+        },
+      })
 
-                }
-            });
-
-
-        })
-    });
+    })
+  })
 </Script>
 @endpush

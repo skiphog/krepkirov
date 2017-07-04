@@ -23,4 +23,9 @@ class IndexController extends Controller
     {
         return view('pages.contacts');
     }
+
+    public function policy()
+    {
+        return view('pages.policy');
+    }
 }

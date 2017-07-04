@@ -8,6 +8,8 @@ Route::get('/contacts', 'IndexController@contacts');
 
 Route::get('/prices', 'PriceController@index');
 
+Route::get('/policy', 'IndexController@policy');
+
 Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/', 'Admin\AdminController@index');
@@ -60,7 +62,7 @@ Route::group(['prefix' => 'cart'], function () {
 
 Route::group(['prefix' => 'account'], function () {
 
-    Route::post('/order', 'OrderController@store')->middleware('cart');
+    Route::post('/order', 'OrderController@store');
 
 });
 

@@ -28,9 +28,9 @@ class OrderRequest extends FormRequest
             $this->request->set('phone', $user->phone);
         }
 
-        $this->request->set('positions', count($this->session()->get('cart')));
+        /*$this->request->set('positions', count($this->session()->get('cart')));
         $this->request->set('sum', $this->session()->get('total'));
-        $this->request->set('weight', $this->session()->get('weight'));
+        $this->request->set('weight', $this->session()->get('weight'));*/
     }
 
     /**
@@ -41,10 +41,11 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'phone' => 'required|max:50',
-            'note' => 'max:255',
-            'email' => 'sometimes|email'
+            'name'   => 'required|max:255',
+            'phone'  => 'required|max:50',
+            'note'   => 'max:255',
+            'email'  => 'sometimes|email',
+            'policy' => 'accepted'
         ];
     }
 }

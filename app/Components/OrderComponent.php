@@ -3,34 +3,54 @@
 namespace App\Components;
 
 
-use App\Http\Requests\OrderRequest;
+use App\Cart;
 use App\Order;
 use App\Product;
-use App\Traits\SessionCart;
+use App\Http\Requests\OrderRequest;
+use Illuminate\Database\Eloquent\Collection;
 
 class OrderComponent
 {
-    use SessionCart;
-
-
     public function createOrder(OrderRequest $request)
     {
-        /** @var Order $order */
-        $order = Order::create($request->all());
+        $cart = Cart::where('cookie_id', $request->cookie('cart'))->get();
 
-        $products = Product::find(array_keys($request->session()->get('cart')))->keyBy('id')->toArray();
+        if ($cart->isEmpty()) {
+            return false;
+        }
+
+        $data = $this->mergeData($request, $cart);
+
+        return $this->insertOrder($data, $cart);
+    }
+
+    private function mergeData(OrderRequest $request, Collection $cart): array
+    {
+        return array_merge($request->all(), [
+            'positions' => $cart->count(),
+            'sum'       => $cart->sum('total_sum'),
+            'weight'    => $cart->sum('weight')
+        ]);
+    }
+
+    private function insertOrder(array $data, Collection $cart)
+    {
+        /** @var Order $order */
+        $order = Order::create($data);
+
+        $products = Product::find($cart->pluck('product_id')->toArray())->keyBy('id')->toArray();
 
         $data = [];
 
-        foreach ((array)$request->session()->get('cart') as $key => $value) {
+        foreach ($cart->keyBy('product_id') as $key => $value) {
             $data[] = [
                 'order_id' => $order->id,
-                'id_1c' => $products[$key]['id_1c'],
-                'name' => $value['name'],
-                'price' => $products[$key]['price_1'],
-                'unit' => $products[$key]['unit'],
+                'id_1c'    => $products[$key]['id_1c'],
+                'name'     => $products[$key]['name'],
+                'price'    => $products[$key]['price_1'],
+                'unit'     => $products[$key]['unit'],
                 'quantity' => $products[$key]['unit'] === 'тыс. шт' ? $value['qty'] / 1000 : $value['qty'],
-                'sum' => $value['sum'],
+                'sum'      => $value['total_sum'],
             ];
         }
 
@@ -39,7 +59,7 @@ class OrderComponent
             return false;
         }
 
-        $this->clearCart();
+        (new CartDb())->destroy();
 
         return $order;
     }

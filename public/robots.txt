@@ -1,5 +1,7 @@
 User-agent: *
 Disallow: /login
+Disallow: /cart/show
+Disallow: /policy
 
 Sitemap: http://krepkirov.ru/sitemap.xml
 Crawl-delay: 10

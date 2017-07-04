@@ -43,7 +43,9 @@ class Order extends Model
 {
     use RewriteJsonable;
 
-    protected $guarded = [];
+    protected $guarded = [
+        'policy'
+    ];
 
     public function orderItems()
     {

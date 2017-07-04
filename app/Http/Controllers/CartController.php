@@ -2,33 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Components\CartComponent;
-use App\Http\Requests\CartRequest;
+use App\Cart;
 use App\Product;
-
+use App\Components\CartDb;
+use App\Http\Requests\CartRequest;
 
 class CartController extends Controller
 {
-
     public function show()
     {
-        return view('cart.cart');
+        $cart = Cart::select(
+            ['products.id', 'products.name', 'products.price_1', 'carts.qty', 'carts.weight','carts.total_sum'])
+            ->where('cookie_id', request()->cookie('cart'))
+            ->join('products', 'products.id', '=', 'carts.product_id')
+            ->get()
+            ->toArray();
+
+        return view('cart.cart', compact('cart'));
     }
 
-    public function change(CartRequest $request)
+    public function change(CartRequest $request, CartDb $cart)
     {
         /** @var Product $product */
         $product = Product::findOrFail($request->id);
 
-        return (new CartComponent)->changeCart($product, $request->qtw);
+        return $cart->changeCart($product, $request);
     }
 
-    public function clear()
+    public function clear(CartDb $cart)
     {
-        (new CartComponent())->clearCart();
+        $cart->destroy();
 
         return back();
     }
-
-
 }
